@@ -1,0 +1,41 @@
+unit militaire;
+
+interface
+procedure milit();
+
+implementation
+procedure milit();
+
+begin
+       writeln(' Civilisation : France                                                                                     Tour : 1');
+       writeln('');
+       writeln('');
+       writeln('');
+       writeln('                                             Ecran de gestion militaire');
+       writeln('                                          --------------------------------');
+       writeln('');
+       writeln('  Listes des troupes disponibles :');
+       writeln('  --------------------------------');
+       writeln('     - Soldats disponibles : 5 ');
+       writeln('     - Canons disponibles : 0 ');
+       writeln('');
+       writeln('');
+       writeln(' Nombres de points disponibles : 0');
+       writeln('');
+       writeln('');
+       writeln('');
+       writeln('');
+       writeln('');
+       writeln(' 1 - Recruter un soldat ');
+       writeln(' 2 - Recruter un canon ');
+       writeln('');
+       writeln(' 4 - Attaquer un petit camp barbare ');
+       writeln(' 5 - Attaquer un grand camp barbare ');
+       writeln('');
+       writeln(' 0 - Retour au menu principal ');
+       readln;
+end;
+
+begin
+
+end.
