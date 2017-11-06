@@ -1,13 +1,13 @@
 unit militaire;
 
 interface
-procedure milit();
+procedure milit(var soldat, canon, point, tour, test : integer);
 
 implementation
-procedure milit();
+procedure milit(var soldat, canon, point, tour, test : integer);
 
 begin
-       writeln(' Civilisation : France                                                                                     Tour : 1');
+       writeln(' Civilisation : France                                                                                     Tour : ', tour);
        writeln('');
        writeln('');
        writeln('');
@@ -16,11 +16,11 @@ begin
        writeln('');
        writeln('  Listes des troupes disponibles :');
        writeln('  --------------------------------');
-       writeln('     - Soldats disponibles : 5 ');
-       writeln('     - Canons disponibles : 0 ');
+       writeln('     - Soldats disponibles : ', soldat);
+       writeln('     - Canons disponibles : ', canon);
        writeln('');
        writeln('');
-       writeln(' Nombres de points disponibles : 0');
+       writeln(' Nombres de points disponibles : ', point);
        writeln('');
        writeln('');
        writeln('');
