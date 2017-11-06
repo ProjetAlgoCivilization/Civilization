@@ -5,7 +5,8 @@ program gestion_capitale;
 {$R *.res}
 
 uses
-  System.SysUtils;
+  System.SysUtils,
+  unitegestioncapitale in 'unitegestioncapitale.pas';
 
 begin
   writeln('  Civilisation : ', '                                                                                            ', 'Tour : ');
@@ -14,7 +15,7 @@ begin
   writeln('                                                   Vue détaillée de: ');
   writeln('                                           ---------------------------------------');
   writeln('                           ');
-  writeln('    Nom : ', '                           ', 'Nourriture : ', '                          ', 'Travail par tour : ');
+  writeln('    Nom : ', '                           ', 'Nourriture : ', '/10', '                          ', 'Travail par tour : ');
   writeln('    Population : ', '                    ', 'Nourriture par tour : ');
   writeln('                                     ', 'Nb tours avant croissance : ');
   writeln('                           ');
