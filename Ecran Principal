@@ -1,0 +1,45 @@
+unit Unit1;
+
+interface
+
+procedure principal(var nourriture:Integer);
+
+implementation
+
+procedure principal(var nourriture:Integer);
+
+begin
+
+   writeln(' Civilisation : France                                                                                       Tour : 1');
+   writeln('');
+   writeln('');
+   writeln('');
+   writeln('                                          Ecran de gestion de la civilisation');
+   writeln('                                      -------------------------------------------');
+   writeln('');
+   writeln('');
+   writeln(' Listes des villes de la civilisation :');
+   writeln(' -------------------------------------');
+   writeln('');
+   writeln('');
+   writeln('');
+   writeln('  Nom : Paris                   Nourriture :',nourriture, '/10                       Travail par tour : 1');
+   writeln('  Population : 1                Nourriture par tour : 1                 Pas de construction en cours');
+   writeln('                                Nb tours avant croissance : 10');
+   writeln('');
+   writeln('');
+   writeln('');
+   writeln('');
+   writeln('');
+   writeln('  1 - Accéder à : Paris');
+   writeln('  2 - Gestion millitaire et diplomatique');
+   writeln('');
+   writeln('  9 - Fin de tour');
+   writeln('  0 - Quitter la partie');
+
+
+  end;
+
+
+
+end.
