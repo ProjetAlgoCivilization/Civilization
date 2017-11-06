@@ -1,0 +1,35 @@
+unit menuInitial;
+
+interface
+procedure menu (var test: integer);
+
+implementation
+procedure menu (var test: integer);
+
+begin
+       { Insérez le titre CIVILIZATON 0 }
+       writeln('Bienvenue dans Civilization 0 - Call to coding ');
+       writeln('');
+       writeln('Votre mission si vous l''acceptez, est de bâtire un empire qui laissera sa marque dans l''histoire, depuis ses' +
+               ' premiers pas à l''époque de l''Antiquité jusqu''en l''an 3000. Lancez-vous dans une conquête au cours de laquelle' +
+               ' chaque stratégie que vous concevez, chaque découverte technologique que vous faites et chaque guerre que vous déclarez' +
+               ' a des répercussions sur l''avenir de votre empire. Répondez à l''appel du pouvoir. L''avenir est entre vos mains.');
+       writeln('');
+       writeln('Que la force soit avec vous ! ');
+       writeln('');
+       writeln('');
+       writeln('     1 - Débuter une nouvelle partie');
+       writeln('');
+       writeln('     2 - Quitter le jeu');
+       writeln('');
+       writeln('');
+       writeln('Alors ? Souhaitez vous jouez, ou préférez vous attendre ?');
+       readln(test);
+       {if (test = 1) then Aller à l'écran principal}
+       {if (test = 2) then Quitter le jeu}
+       {else
+       begin
+             writeln('Petit malin on a dit 1 ou 2');
+             readln;
+       end;}
+end;
