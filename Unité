@@ -1,0 +1,133 @@
+unit pgPrincipal;
+
+interface
+
+procedure principal(nourriture,tour,nourritureTour,population,travailTour,tourAvCroissance:INTEGER);
+procedure menu (var test,nourriture,tour,nourritureTour,population,travailTour,tourAvCroissance:Integer);
+implementation
+
+procedure principal(nourriture,tour,nourritureTour,population,travailTour,tourAvCroissance:INTEGER);
+
+begin
+
+   writeln(' Civilisation : France                                                                                         Tour :' ,tour);
+   writeln('');
+   writeln('');
+   writeln('');
+   writeln('                                          Ecran de gestion de la civilisation');
+   writeln('                                      -------------------------------------------');
+   writeln('');
+   writeln('');
+   writeln(' Listes des villes de la civilisation :');
+   writeln(' -------------------------------------');
+   writeln('');
+   writeln('');
+   writeln('');
+   writeln('  Nom : Paris'+               'Nourriture :', nourriture, '/10                       Travail par tour :' ,travailTour);
+   writeln('  Population :',population,'                Nourriture par tour : ',nourritureTour ,'                 Pas de construction en cours');
+   writeln('                                Nb tours avant croissance :',tourAvCroissance);
+   writeln('');
+   writeln('');
+   writeln('');
+   writeln('');
+   writeln('');
+   writeln('  1 - Accéder à : Paris');
+   writeln('  2 - Gestion millitaire et diplomatique');
+   writeln('');
+   writeln('  9 - Fin de tour');
+   writeln('  0 - Quitter la partie');
+
+
+end;
+
+procedure menu (var test,nourriture,tour,nourritureTour,population,travailTour,tourAvCroissance:Integer);
+
+begin
+       { Insérez le titre CIVILIZATON 0 }
+       writeln('Bienvenue dans Civilization 0 - Call to coding ');
+       writeln('');
+       writeln('Votre mission si vous l''acceptez, est de bâtir un empire qui laissera sa marque dans l''histoire, depuis ses' +
+               ' premiers pas à l''époque de l''Antiquité jusqu''en l''an 3000. Lancez-vous dans une conquête au cours de laquelle' +
+               ' chaque stratégie que vous concevez, chaque découverte technologique que vous faites et chaque guerre que vous déclarez' +
+               ' a des répercussions sur l''avenir de votre empire. Répondez à l''appel du pouvoir. L''avenir est entre vos mains.');
+       writeln('');
+       writeln('Que la force soit avec vous ! ');
+       writeln('');
+       writeln('');
+       writeln('     1 - Débuter une nouvelle partie');
+       writeln('');
+       writeln('     2 - Quitter le jeu');
+       writeln('');
+       writeln('');
+       writeln('Alors ? Souhaitez vous jouez, ou préférez vous attendre ?');
+       readln(test);
+       if (test = 1) then principal(nourriture,tour,nourritureTour,population,travailTour,tourAvCroissance);
+       {if (test = 2) then Quitter le jeu  fin(...)}
+end;
+
+procedure capitale(nourriture,tour,nourritureTour,population,travailTour,tourAvCroissance);
+
+begin
+  writeln('  Civilisation : France                                                                                             Tour :', tour);
+  writeln('                           ');
+  writeln('                           ');
+  writeln('                                                   Vue détaillée de: ');
+  writeln('                                           ---------------------------------------');
+  writeln('                           ');
+  writeln('  Nom : Paris'+               'Nourriture :', nourriture, '/10                       Travail par tour :' ,travailTour);
+  writeln('  Population :',population,'                Nourriture par tour : ',nourritureTour ,'                 Pas de construction en cours');
+  writeln('                                     ', 'Nb tours avant croissance : ');
+  writeln('                           ');
+  writeln('                           ');
+  writeln('  Bâtiments construits : ');
+  writeln('                           ');
+  writeln('                           ');
+  writeln('                           ');
+  writeln('                           ');
+  writeln('                           ');
+  writeln('                           ');
+  writeln('                           ');
+  writeln('                           ');
+  writeln('                           ');
+  writeln('                           ');
+  writeln('                           ');
+  writeln('  1 - Construire la ferme');
+  writeln('  2 - Construire la mine');
+  writeln('  3 - Construire la carrière');
+  writeln('  4 - Construire la caserne');
+  writeln('                           ');
+  writeln('  0 - Retour au menu');
+  readln;
+end;
+
+ procedure combat(tour);
+
+begin
+  writeln('  Civilisation : France                                                                                             Tour :', tour);
+  writeln('                           ');
+  writeln('                                               Combat contre : ');
+  writeln('                                           ------------------------------------------');
+  writeln('                           ');
+  writeln('                           ');
+  writeln('  Description de vos forces : ');
+  writeln('  ---------------------------');
+  writeln('     - Soldats disponibles : ');
+  writeln('     - Canons disponibles  : ');
+  writeln('                           ');
+  writeln('  Descriptif des forces ennemies : ');
+  writeln('  --------------------------------');
+  writeln('     - Soldats disponibles : ');
+  writeln('     - Canons disponibles  : ');
+  writeln('                           ');
+  writeln('                           ');
+  writeln('                           ');
+  writeln('                           ');
+  writeln('                           ');
+  writeln('                           ');
+  writeln('                           ');
+  writeln('                           ');
+  writeln('                           ');
+  writeln('  1 - Attaquer les soldats ennemis');
+  writeln('  2 - Attaquer les canons ennemis');
+  readln;
+end;
