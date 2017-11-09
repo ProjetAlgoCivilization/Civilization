@@ -1,0 +1,42 @@
+program gestion_capitale;
+
+{$APPTYPE CONSOLE}
+
+{$R *.res}
+
+uses
+  System.SysUtils,
+  unitegestioncapitale in 'unitegestioncapitale.pas';
+
+begin
+  writeln('  Civilisation : ', '                                                                                            ', 'Tour : ');
+  writeln('                           ');
+  writeln('                           ');
+  writeln('                                                   Vue détaillée de: ');
+  writeln('                                           ---------------------------------------');
+  writeln('                           ');
+  writeln('    Nom : Paris', '                      ', 'Nourriture : ', '/10', '                          ', 'Travail par tour : ');
+  writeln('    Population : ', '                    ', 'Nourriture par tour : ');
+  writeln('                                     ', 'Nb tours avant croissance : ');
+  writeln('                           ');
+  writeln('                           ');
+  writeln('  Bâtiments construits : ');
+  writeln('                           ');
+  writeln('                           ');
+  writeln('                           ');
+  writeln('                           ');
+  writeln('                           ');
+  writeln('                           ');
+  writeln('                           ');
+  writeln('                           ');
+  writeln('                           ');
+  writeln('                           ');
+  writeln('                           ');
+  writeln('  1 - Construire la ferme');
+  writeln('  2 - Construire la mine');
+  writeln('  3 - Construire la carrière');
+  writeln('  4 - Construire la caserne');
+  writeln('                           ');
+  writeln('  0 - Retour au menu');
+  readln;
+end.
