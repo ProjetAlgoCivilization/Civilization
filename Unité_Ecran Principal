@@ -2,11 +2,11 @@ unit Unit1;
 
 interface
 
-procedure principal(nourriture,tour,nourritureTour,population,travailTour,tourAvCroissance:INTEGER;ville:string);
+procedure principal(nourriture,tour,nourritureTour,population,travailTour,tourAvCroissance:INTEGER);
 
 implementation
 
-procedure principal(nourriture,tour,nourritureTour,population,travailTour,tourAvCroissance:INTEGER;ville:string);
+procedure principal(nourriture,tour,nourritureTour,population,travailTour,tourAvCroissance:INTEGER);
 
 begin
 
@@ -23,7 +23,7 @@ begin
    writeln('');
    writeln('');
    writeln('');
-   writeln('  Nom : ', ville,'                   Nourriture :', nourriture, '/10                       Travail par tour :' ,travailTour);
+   writeln('  Nom : Paris'               Nourriture :', nourriture, '/10                       Travail par tour :' ,travailTour);
    writeln('  Population :',population,'                Nourriture par tour : ',nourritureTour ,'                 Pas de construction en cours');
    writeln('                                Nb tours avant croissance :',tourAvCroissance);
    writeln('');
