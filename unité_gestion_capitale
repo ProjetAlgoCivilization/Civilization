@@ -1,23 +1,23 @@
-program gestion_capitale;
+unit unitegestioncapitale;
 
-{$APPTYPE CONSOLE}
+interface
 
-{$R *.res}
+procedure gestioncapitale(nourriture, population, nourritureTour, travailTour, nbTours, toursCroissance, choix: INTEGER);
 
-uses
-  System.SysUtils,
-  unitegestioncapitale in 'unitegestioncapitale.pas';
+implementation
+
+procedure gestioncapitale(nourriture, population, nourrituretour, travailtour, nbtours, tourscroissance, choix: INTEGER);
 
 begin
-  writeln('  Civilisation : ', '                                                                                            ', 'Tour : ');
+  writeln('  Civilisation : France', '                                                                                      ', 'Tour : ', nbtours);
   writeln('                           ');
   writeln('                           ');
-  writeln('                                                   Vue détaillée de: ');
+  writeln('                                                   Vue détaillée de: Paris');
   writeln('                                           ---------------------------------------');
   writeln('                           ');
-  writeln('    Nom : Paris', '                      ', 'Nourriture : ', '/10', '                          ', 'Travail par tour : ');
-  writeln('    Population : ', '                    ', 'Nourriture par tour : ');
-  writeln('                                     ', 'Nb tours avant croissance : ');
+  writeln('    Nom : Paris', '                      ',  'Nourriture : ', nourriture, '/10', '                          ', 'Travail par tour : ', travailtour);
+  writeln('    Population : ', population, '                   ', 'Nourriture par tour : ', nourrituretour, '                    ', 'Pas de construction en cours');
+  writeln('                                     ', 'Nb tours avant croissance : ', tourscroissance);
   writeln('                           ');
   writeln('                           ');
   writeln('  Bâtiments construits : ');
@@ -39,4 +39,5 @@ begin
   writeln('                           ');
   writeln('  0 - Retour au menu');
   readln;
+end;
 end.
