@@ -1,0 +1,29 @@
+program Civilization0;
+
+{$APPTYPE CONSOLE}
+
+{$R *.res}
+
+{ Menu initial }
+
+uses
+  System.SysUtils,
+  pgPrincipal in 'pgPrincipal.pas';
+
+
+var
+    nourriture, tour, nourritureTour, population, travailTour, tourAvCroissance: integer;
+begin
+      tour:=2;
+      nourriture:=5;
+      nourritureTour := 8;
+      population := 14  ;
+      travailTour := 3;
+      tourAvCroissance:= 89;
+
+      menu(nourriture, tour, nourritureTour, population, travailTour, tourAvCroissance);
+      readln;
+
+      readln;
+
+end.
