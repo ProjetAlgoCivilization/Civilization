@@ -11,10 +11,9 @@ implementation
 
 procedure milit(var P_soldat, P_canon, P_point, P_tour: Integer);
 var test : Integer;
-
 begin
        effacerEcran;
-       writeln(' Civilisation : France                                                                                     Tour : ', P_tour);
+       writeln(' Civilisation : France                                                                                      Tour : ', P_tour);
        writeln('');
        writeln('');
        writeln('');
@@ -47,6 +46,7 @@ end;
 procedure principal(var P_nourriture, P_tour, P_nourritureTour, P_population, P_travailTour, P_tourAvCroissance, P_soldat, P_canon, P_point :INTEGER);
  var test: Integer;
 
+
 begin
    effacerEcran;
    writeln(' Civilisation : France                                                                                   Tour :' ,P_tour);
@@ -76,6 +76,7 @@ begin
    writeln('  9 - Fin de tour');
    writeln('  0 - Quitter la partie');
    readln(test);
+
    if (test = 1) then capitale(P_nourriture,P_tour,P_nourritureTour,P_population,P_travailTour,P_tourAvCroissance);
    if (test = 2) then milit(P_soldat, P_canon, P_point, P_tour);
    //if (test = 9) then
@@ -130,13 +131,15 @@ begin
           effacerEcran;
           menu (P_nourriture,P_tour,P_nourritureTour,P_population,P_travailTour,P_tourAvCroissance, P_soldat, P_canon, P_point);
         end;
-          {if (test = 2) then Quitter le jeu  fin(...)}
+       {if (test = 2) then Quitter le jeu  fin(...)}
 end;
 
 procedure capitale(var P_nourriture,P_tour,P_nourritureTour,P_population,P_travailTour,P_tourAvCroissance:Integer);
   var test : Integer;
+position: integer;
 begin
   effacerEcran;
+  position := 60;
   writeln('  Civilisation : France                                                                                             Tour :', P_tour);
   writeln('                           ');
   writeln('                           ');
@@ -166,7 +169,9 @@ begin
   writeln('  4 - Construire la caserne');
   writeln('                           ');
   writeln('  0 - Retour au menu');
+  changerColonneCurseur(position);
   readln;
+
 end;
 
 procedure combat(var P_tour :Integer);
