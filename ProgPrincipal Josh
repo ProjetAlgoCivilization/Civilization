@@ -1,0 +1,204 @@
+unit pgPrincipal;
+
+interface
+   uses   GestionEcran ;
+procedure principal(var P_nourriture,P_tour,P_nourritureTour,P_population,P_travailTour,P_tourAvCroissance, P_soldat, P_canon, P_point :INTEGER);
+procedure menu (var P_nourriture,P_tour,P_nourritureTour,P_population,P_travailTour,P_tourAvCroissance, P_soldat, P_canon, P_point:Integer);
+procedure capitale(var P_nourriture,P_tour,P_nourritureTour,P_population,P_travailTour,P_tourAvCroissance:Integer);
+procedure milit(var P_soldat, P_canon, P_point, P_tour: Integer);
+procedure combat(var P_tour :Integer);
+implementation
+
+procedure milit(var P_soldat, P_canon, P_point, P_tour: Integer);
+var test : Integer;
+
+begin
+       effacerEcran;
+       writeln(' Civilisation : France                                                                                     Tour : ', P_tour);
+       writeln('');
+       writeln('');
+       writeln('');
+
+       writeln('                                             Ecran de gestion militaire');
+       writeln('                                          --------------------------------');
+       writeln('');
+       writeln('  Listes des troupes disponibles :');
+       writeln('  --------------------------------');
+       writeln('     - Soldats disponibles : ', P_soldat);
+       writeln('     - Canons disponibles : ', P_canon);
+       writeln('');
+       writeln('');
+       writeln(' Nombres de points disponibles : ', P_point);
+       writeln('');
+       writeln('');
+       writeln('');
+       writeln('');
+       writeln('');
+       writeln(' 1 - Recruter un soldat ');
+       writeln(' 2 - Recruter un canon ');
+       writeln('');
+       writeln(' 4 - Attaquer un petit camp barbare ');
+       writeln(' 5 - Attaquer un grand camp barbare ');
+       writeln('');
+       writeln(' 0 - Retour au menu principal ');
+
+end;
+
+procedure principal(var P_nourriture, P_tour, P_nourritureTour, P_population, P_travailTour, P_tourAvCroissance, P_soldat, P_canon, P_point :INTEGER);
+ var test: Integer;
+
+begin
+   effacerEcran;
+   writeln(' Civilisation : France                                                                                   Tour :' ,P_tour);
+   writeln('');
+   writeln('');
+   writeln('');
+   writeln('                                          Ecran de gestion de la civilisation');
+   writeln('                                      -------------------------------------------');
+   writeln('');
+   writeln('');
+   writeln(' Listes des villes de la civilisation :');
+   writeln(' -------------------------------------');
+   writeln('');
+   writeln('');
+   writeln('');
+   writeln('  Nom : Paris                Nourriture :', P_nourriture, '/10                       Travail par tour :' ,P_travailTour);
+   writeln('  Population :',P_population,'                Nourriture par tour : ',P_nourritureTour ,'                 Pas de construction en cours');
+   writeln('                                Nb tours avant croissance :',P_tourAvCroissance);
+   writeln('');
+   writeln('');
+   writeln('');
+   writeln('');
+   writeln('');
+   writeln('  1 - Accéder à : Paris');
+   writeln('  2 - Gestion millitaire et diplomatique');
+   writeln(' ');
+   writeln('  9 - Fin de tour');
+   writeln('  0 - Quitter la partie');
+   readln(test);
+   if (test = 1) then capitale(P_nourriture,P_tour,P_nourritureTour,P_population,P_travailTour,P_tourAvCroissance);
+   if (test = 2) then milit(P_soldat, P_canon, P_point, P_tour);
+   //if (test = 9) then
+   if (test = 0) then menu (P_nourriture,P_tour,P_nourritureTour,P_population,P_travailTour,P_tourAvCroissance, P_soldat, P_canon, P_point)
+end;
+
+
+
+procedure menu (var P_nourriture,P_tour,P_nourritureTour,P_population,P_travailTour,P_tourAvCroissance, P_soldat, P_canon, P_point:Integer);
+   var test: Integer;
+begin
+       { Insérez le titre CIVILIZATON 0 }
+       writeln('                                                                                      ');
+       writeln('                                                                                       ');
+       writeln('                                                                                      ');
+       writeln('                                                                                       ');
+       writeln('                  ══════════════════════════════════════════════════════════════════════════════  ');
+       writeln('                                                                                      ');
+       writeln('                                                                                       ');
+       writeln('             ██████╗██╗██╗   ██╗██╗██╗     ██╗███████╗ █████╗ ████████╗██╗ ██████╗ ███╗   ██╗     ██████╗');
+       writeln('            ██╔════╝██║██║   ██║██║██║     ██║╚══███╔╝██╔══██╗╚══██╔══╝██║██╔═══██╗████╗  ██║    ██╔═████╗');
+       writeln('            ██║     ██║██║   ██║██║██║     ██║  ███╔╝ ███████║   ██║   ██║██║   ██║██╔██╗ ██║    ██║██╔██║');
+       writeln('            ██║     ██║╚██╗ ██╔╝██║██║     ██║ ███╔╝  ██╔══██║   ██║   ██║██║   ██║██║╚██╗██║    ████╔╝██║ ');
+       writeln('            ╚██████╗██║ ╚████╔╝ ██║███████╗██║███████╗██║  ██║   ██║   ██║╚██████╔╝██║ ╚████║    ╚██████╔╝ ');
+       writeln('             ╚═════╝╚═╝  ╚═══╝  ╚═╝╚══════╝╚═╝╚══════╝╚═╝  ╚═╝   ╚═╝   ╚═╝ ╚═════╝ ╚═╝  ╚═══╝     ╚═════╝  ');
+       writeln('                                                                                      ');
+       writeln('                                                                                       ');
+       writeln('                  ══════════════════════════════════════════════════════════════════════════════');
+       writeln('                                                                                       ');
+       writeln('                                                                                       ');
+
+       writeln('Bienvenue dans Civilization 0 - Call to coding ');
+       writeln('');
+       writeln('Votre mission si vous l''acceptez, est de bâtir un empire qui laissera sa marque dans l''histoire, depuis ses' +
+               ' premiers pas à l''époque de l''Antiquité jusqu''en l''an 3000. Lancez-vous dans une conquête au cours de laquelle' +
+               ' chaque stratégie que vous concevez, chaque découverte technologique que vous faites et chaque guerre que vous déclarez' +
+               ' a des répercussions sur l''avenir de votre empire. Répondez à l''appel du pouvoir. L''avenir est entre vos mains.');
+       writeln('');
+       writeln('Que la force soit avec vous ! ');
+       writeln('');
+       writeln('');
+       writeln('     1 - Débuter une nouvelle partie');
+       writeln('');
+       writeln('     2 - Quitter le jeu');
+       writeln('');
+       writeln('');
+       writeln('Alors ? Souhaitez vous jouez, ou préférez vous attendre ?');
+       readln(test);
+       if (test = 1) then principal(P_nourriture,P_tour,P_nourritureTour,P_population,P_travailTour,P_tourAvCroissance, P_soldat, P_canon, P_point);
+       if (test < 1) or (test > 2) then
+        begin
+          effacerEcran;
+          menu (P_nourriture,P_tour,P_nourritureTour,P_population,P_travailTour,P_tourAvCroissance, P_soldat, P_canon, P_point);
+        end;
+          {if (test = 2) then Quitter le jeu  fin(...)}
+end;
+
+procedure capitale(var P_nourriture,P_tour,P_nourritureTour,P_population,P_travailTour,P_tourAvCroissance:Integer);
+  var test : Integer;
+begin
+  effacerEcran;
+  writeln('  Civilisation : France                                                                                             Tour :', P_tour);
+  writeln('                           ');
+  writeln('                           ');
+  writeln('                                                   Vue détaillée de: ');
+  writeln('                                           ---------------------------------------');
+  writeln('                           ');
+  writeln('  Nom : Paris               Nourriture :', P_nourriture, '/10                       Travail par tour :' ,P_travailTour);
+  writeln('  Population :',P_population,'                Nourriture par tour : ',P_nourritureTour ,'                 Pas de construction en cours');
+  writeln('                                     ', 'Nb tours avant croissance : ', P_tourAvCroissance);
+  writeln('                           ');
+  writeln('                           ');
+  writeln('  Bâtiments construits : ');
+  writeln('                           ');
+  writeln('                           ');
+  writeln('                           ');
+  writeln('                           ');
+  writeln('                           ');
+  writeln('                           ');
+  writeln('                           ');
+  writeln('                           ');
+  writeln('                           ');
+  writeln('                           ');
+  writeln('                           ');
+  writeln('  1 - Construire la ferme');
+  writeln('  2 - Construire la mine');
+  writeln('  3 - Construire la carrière');
+  writeln('  4 - Construire la caserne');
+  writeln('                           ');
+  writeln('  0 - Retour au menu');
+  readln;
+end;
+
+procedure combat(var P_tour :Integer);
+
+begin
+  effacerEcran;
+  writeln('  Civilisation : France                                                                                             Tour :', P_tour);
+  writeln('                           ');
+  writeln('                                               Combat contre : ');
+  writeln('                                           ------------------------------------------');
+  writeln('                           ');
+  writeln('                           ');
+  writeln('  Description de vos forces : ');
+  writeln('  ---------------------------');
+  writeln('     - Soldats disponibles : ');
+  writeln('     - Canons disponibles  : ');
+  writeln('                           ');
+  writeln('  Descriptif des forces ennemies : ');
+  writeln('  --------------------------------');
+  writeln('     - Soldats disponibles : ');
+  writeln('     - Canons disponibles  : ');
+  writeln('                           ');
+  writeln('                           ');
+  writeln('                           ');
+  writeln('                           ');
+  writeln('                           ');
+  writeln('                           ');
+  writeln('                           ');
+  writeln('                           ');
+  writeln('                           ');
+  writeln('  1 - Attaquer les soldats ennemis');
+  writeln('  2 - Attaquer les canons ennemis');
+  readln;
+end;
+end.
