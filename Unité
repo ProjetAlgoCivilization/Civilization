@@ -2,18 +2,21 @@ unit pgPrincipal;
 
 interface
    uses   GestionEcran ;
-procedure principal(var P_nourriture,P_tour,P_nourritureTour,P_population,P_travailTour,P_tourAvCroissance, P_soldat, P_canon, P_point :INTEGER);
-procedure menu (var P_nourriture,P_tour,P_nourritureTour,P_population,P_travailTour,P_tourAvCroissance, P_soldat, P_canon, P_point:Integer);
-procedure capitale(var P_nourriture,P_tour,P_nourritureTour,P_population,P_travailTour,P_tourAvCroissance:Integer);
-procedure milit(var P_soldat, P_canon, P_point, P_tour: Integer);
+procedure principal(var P_nourriture,P_tour,P_nourritureTour,P_population,P_travailTour,P_tourAvCroissance,
+                        P_soldat, P_canon, P_point :INTEGER);
+procedure menu (var P_nourriture,P_tour,P_nourritureTour,P_population,P_travailTour,P_tourAvCroissance,
+                    P_soldat, P_canon, P_point:Integer);
+procedure capitale(var P_nourriture,P_tour,P_nourritureTour,P_population,P_travailTour,P_tourAvCroissance, P_soldat, P_canon, P_point:Integer);
+procedure milit(var P_nourriture,P_tour,P_nourritureTour,P_population,P_travailTour,P_tourAvCroissance, P_soldat, P_canon, P_point : Integer);
 procedure combat(var P_tour :Integer);
 implementation
 
-procedure milit(var P_soldat, P_canon, P_point, P_tour: Integer);
+procedure milit(var P_nourriture,P_tour,P_nourritureTour,P_population,P_travailTour,P_tourAvCroissance, P_soldat, P_canon, P_point : Integer);
 var test : Integer;
 
 begin
-       writeln(' Civilisation : France                                                                                     Tour : ', P_tour);
+       effacerEcran;
+       writeln(' Civilisation : France                                                                                        Tour : ', P_tour);
        writeln('');
        writeln('');
        writeln('');
@@ -39,15 +42,21 @@ begin
        writeln(' 5 - Attaquer un grand camp barbare ');
        writeln('');
        writeln(' 0 - Retour au menu principal ');
+       readln(test);
+       //if ((test = 1) OR (test =2)) then
+       if ((test = 3) OR (test =4)) then combat(P_tour);
+       if (test = 0) then  principal(P_nourriture,P_tour,P_nourritureTour,P_population,P_travailTour,P_tourAvCroissance, P_soldat, P_canon, P_point);
+
 
 end;
 
-procedure principal(var P_nourriture, P_tour, P_nourritureTour, P_population, P_travailTour, P_tourAvCroissance, P_soldat, P_canon, P_point :INTEGER);
+procedure principal(var P_nourriture, P_tour, P_nourritureTour, P_population, P_travailTour, P_tourAvCroissance,
+                        P_soldat, P_canon, P_point :INTEGER);
  var test: Integer;
 
 begin
    effacerEcran;
-   writeln(' Civilisation : France                                                                                   Tour :' ,P_tour);
+   writeln(' Civilisation : France                                                                                      Tour :' ,P_tour);
    writeln('');
    writeln('');
    writeln('');
@@ -74,10 +83,10 @@ begin
    writeln('  9 - Fin de tour');
    writeln('  0 - Quitter la partie');
    readln(test);
-   if (test = 1) then capitale(P_nourriture,P_tour,P_nourritureTour,P_population,P_travailTour,P_tourAvCroissance);
-   if (test = 2) then milit(P_soldat, P_canon, P_point, P_tour);
-   //if (test = 9) then
-   if (test = 0) then menu (P_nourriture,P_tour,P_nourritureTour,P_population,P_travailTour,P_tourAvCroissance, P_soldat, P_canon, P_point)
+   if (test = 1) then capitale(P_nourriture,P_tour,P_nourritureTour,P_population,P_travailTour,P_tourAvCroissance, P_soldat, P_canon, P_point);
+   if (test = 2) then milit(P_nourriture,P_tour,P_nourritureTour,P_population,P_travailTour,P_tourAvCroissance, P_soldat, P_canon, P_point);
+   if (test = 0) then menu (P_nourriture,P_tour,P_nourritureTour,P_population,P_travailTour,P_tourAvCroissance,
+                      P_soldat, P_canon, P_point);
 end;
 
 
@@ -86,6 +95,7 @@ procedure menu (var P_nourriture,P_tour,P_nourritureTour,P_population,P_travailT
    var test: Integer;
 begin
        { Insérez le titre CIVILIZATON 0 }
+       effacerEcran;
        writeln('Bienvenue dans Civilization 0 - Call to coding ');
        writeln('');
        writeln('Votre mission si vous l''acceptez, est de bâtir un empire qui laissera sa marque dans l''histoire, depuis ses' +
@@ -104,17 +114,26 @@ begin
        writeln('Alors ? Souhaitez vous jouez, ou préférez vous attendre ?');
        readln(test);
        if (test = 1) then principal(P_nourriture,P_tour,P_nourritureTour,P_population,P_travailTour,P_tourAvCroissance, P_soldat, P_canon, P_point);
-       {if (test = 2) then Quitter le jeu  fin(...)}
+       if (test = 2) then
+       begin
+       effacerEcran;
+       writeln('Merci d''avoir joué. Pour quitter définitivement le jeu pressez 2 fois la touche " Entrée"');
+       end
+       //else
+       //begin
+       //effacerEcran;
+       //writeln('Tu te crois drôle ?!');
+       //end;
 end;
 
-procedure capitale(var P_nourriture,P_tour,P_nourritureTour,P_population,P_travailTour,P_tourAvCroissance:Integer);
+procedure capitale(var P_nourriture,P_tour,P_nourritureTour,P_population,P_travailTour,P_tourAvCroissance, P_soldat, P_canon, P_point:Integer);
   var test : Integer;
 begin
   effacerEcran;
   writeln('  Civilisation : France                                                                                             Tour :', P_tour);
   writeln('                           ');
   writeln('                           ');
-  writeln('                                                   Vue détaillée de: ');
+  writeln('                                                   Vue détaillée de: Paris');
   writeln('                                           ---------------------------------------');
   writeln('                           ');
   writeln('  Nom : Paris               Nourriture :', P_nourriture, '/10                       Travail par tour :' ,P_travailTour);
@@ -140,7 +159,8 @@ begin
   writeln('  4 - Construire la caserne');
   writeln('                           ');
   writeln('  0 - Retour au menu');
-  readln;
+  readln(test);
+  if(test=0) then principal(P_nourriture,P_tour,P_nourritureTour,P_population,P_travailTour,P_tourAvCroissance, P_soldat, P_canon, P_point);
 end;
 
 procedure combat(var P_tour :Integer);
