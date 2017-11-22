@@ -46,6 +46,11 @@ begin
        //if ((test = 1) OR (test =2)) then
        if ((test = 3) OR (test =4)) then combat(P_tour);
        if (test = 0) then  principal(P_nourriture,P_tour,P_nourritureTour,P_population,P_travailTour,P_tourAvCroissance, P_soldat, P_canon, P_point);
+       if (test < 0) or (test > 4) then
+        begin
+            effacerEcran;
+            milit(P_nourriture,P_tour,P_nourritureTour,P_population,P_travailTour,P_tourAvCroissance, P_soldat, P_canon, P_point);
+        end;
 
 
 end;
@@ -87,6 +92,11 @@ begin
    if (test = 2) then milit(P_nourriture,P_tour,P_nourritureTour,P_population,P_travailTour,P_tourAvCroissance, P_soldat, P_canon, P_point);
    if (test = 0) then menu (P_nourriture,P_tour,P_nourritureTour,P_population,P_travailTour,P_tourAvCroissance,
                       P_soldat, P_canon, P_point);
+   if (test < 0) OR (test > 2) AND (test <> 9) then
+        begin
+            effacerEcran;
+            principal(P_nourriture, P_tour, P_nourritureTour, P_population, P_travailTour, P_tourAvCroissance, P_soldat, P_canon, P_point);
+        end;
 end;
 
 
@@ -179,6 +189,11 @@ begin
   writeln('  0 - Retour au menu');
   readln(test);
   if(test=0) then principal(P_nourriture,P_tour,P_nourritureTour,P_population,P_travailTour,P_tourAvCroissance, P_soldat, P_canon, P_point);
+  if (test < 0) or (test > 4) then
+        begin
+            effacerEcran;
+            capitale(P_nourriture,P_tour,P_nourritureTour,P_population,P_travailTour,P_tourAvCroissance, P_soldat, P_canon, P_point);
+        end;
 end;
 
 procedure combat(var P_tour :Integer);
