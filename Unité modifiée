@@ -9,6 +9,7 @@ procedure menu (var P_nourriture,P_tour,P_nourritureTour,P_population,P_travailT
 procedure capitale(var P_nourriture,P_tour,P_nourritureTour,P_population,P_travailTour,P_tourAvCroissance, P_soldat, P_canon, P_point:Integer);
 procedure milit(var P_nourriture,P_tour,P_nourritureTour,P_population,P_travailTour,P_tourAvCroissance, P_soldat, P_canon, P_point : Integer);
 procedure combat(var P_tour :Integer);
+procedure finTour(var P_tour, P_nourriture, P_nourritureTour, P_tourAvCroissance : integer);
 implementation
 
 procedure milit(var P_nourriture,P_tour,P_nourritureTour,P_population,P_travailTour,P_tourAvCroissance, P_soldat, P_canon, P_point : Integer);
@@ -97,6 +98,10 @@ begin
             effacerEcran;
             principal(P_nourriture, P_tour, P_nourritureTour, P_population, P_travailTour, P_tourAvCroissance, P_soldat, P_canon, P_point);
         end;
+   if (test = 9) then
+   begin
+        finTour(P_tour, P_nourriture, P_nourritureTour, P_tourAvCroissance);
+   end;
 end;
 
 
@@ -228,4 +233,13 @@ begin
   writeln('  2 - Attaquer les canons ennemis');
   readln;
 end;
+
+procedure finTour(var P_tour, P_nourriture, P_nourritureTour, P_tourAvCroissance : integer);
+begin
+      P_tour := P_tour + 1;
+      P_nourriture := P_nourriture + P_nourritureTour;
+      P_tourAvCroissance := P_tourAvCroissance - 1;
+end;
+
 end.
+
