@@ -10,6 +10,8 @@ procedure capitale(var P_nourriture,P_tour,P_nourritureTour,P_population,P_trava
 procedure milit(var P_nourriture,P_tour,P_nourritureTour,P_population,P_travailTour,P_tourAvCroissance, P_soldat, P_canon, P_point : Integer);
 procedure combat(var P_tour :Integer);
 procedure finTour(var P_tour, P_nourriture, P_nourritureTour, P_tourAvCroissance : integer);
+procedure croissance(var P_population, P_travailTour, P_tourAvCroissance : integer);
+
 implementation
 
 procedure milit(var P_nourriture,P_tour,P_nourritureTour,P_population,P_travailTour,P_tourAvCroissance, P_soldat, P_canon, P_point : Integer);
@@ -89,6 +91,7 @@ begin
    writeln('  9 - Fin de tour');
    writeln('  0 - Quitter la partie');
    readln(test);
+
    if (test = 1) then capitale(P_nourriture,P_tour,P_nourritureTour,P_population,P_travailTour,P_tourAvCroissance, P_soldat, P_canon, P_point);
    if (test = 2) then milit(P_nourriture,P_tour,P_nourritureTour,P_population,P_travailTour,P_tourAvCroissance, P_soldat, P_canon, P_point);
    if (test = 0) then menu (P_nourriture,P_tour,P_nourritureTour,P_population,P_travailTour,P_tourAvCroissance,
@@ -99,9 +102,18 @@ begin
             principal(P_nourriture, P_tour, P_nourritureTour, P_population, P_travailTour, P_tourAvCroissance, P_soldat, P_canon, P_point);
         end;
    if (test = 9) then
-   begin
-        finTour(P_tour, P_nourriture, P_nourritureTour, P_tourAvCroissance);
-   end;
+      begin
+
+          finTour(P_tour, P_nourriture, P_nourritureTour, P_tourAvCroissance);
+          principal(P_nourriture, P_tour, P_nourritureTour, P_population, P_travailTour, P_tourAvCroissance, P_soldat, P_canon, P_point);
+          if (P_tourAvCroissance = 0) then
+          begin
+               croissance(P_population, P_travailTour, P_tourAvCroissance);
+               effacerEcran;
+          end;
+          principal(P_nourriture, P_tour, P_nourritureTour, P_population, P_travailTour, P_tourAvCroissance, P_soldat, P_canon, P_point);
+      end;
+
 end;
 
 
@@ -110,10 +122,6 @@ procedure menu (var P_nourriture,P_tour,P_nourritureTour,P_population,P_travailT
    var test: Integer;
 begin
        effacerEcran;
-       writeln('                                                                                      ');
-       writeln('                                                                                       ');
-       writeln('                                                                                      ');
-       writeln('                                                                                       ');
        writeln('                  ══════════════════════════════════════════════════════════════════════════════  ');
        writeln('                                                                                      ');
        writeln('                                                                                       ');
@@ -131,7 +139,7 @@ begin
 
        writeln('Bienvenue dans Civilization 0 - Call to coding ');
        writeln('');
-       writeln('Votre mission si vous l''acceptez, est de bâtir un empire qui laissera sa marque dans l''histoire, depuis ses' +
+       writeln('Votre mission si vous l''acceptez est de bâtir empire qui laissera sa marque dans l''histoire, depuis ses' +
                ' premiers pas à l''époque de l''Antiquité jusqu''en l''an 3000. Lancez-vous dans une conquête au cours de laquelle' +
                ' chaque stratégie que vous concevez, chaque découverte technologique que vous faites et chaque guerre que vous déclarez' +
                ' a des répercussions sur l''avenir de votre empire. Répondez à l''appel du pouvoir. L''avenir est entre vos mains.');
@@ -239,7 +247,13 @@ begin
       P_tour := P_tour + 1;
       P_nourriture := P_nourriture + P_nourritureTour;
       P_tourAvCroissance := P_tourAvCroissance - 1;
+
 end;
 
+procedure croissance(var P_population, P_travailTour, P_tourAvCroissance : integer);
+begin
+      P_population := P_population + 1;
+      P_travailTour := P_travailTour +1;
+end;
 end.
 
