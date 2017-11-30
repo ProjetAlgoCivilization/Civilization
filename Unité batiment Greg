@@ -1,0 +1,36 @@
+unit batiment;
+
+interface
+
+implementation
+
+procedure mine();
+var test : integer;
+begin
+       P_travailTour := p_travailTour + 2;
+end;
+
+
+procedure caserne ();
+var test:integer;
+begin
+    P_point := P_point + 3 ;
+end;
+
+procedure ferme();
+var test:integer;
+begin
+  P_nouTour := P_nouTour +3;
+
+end;
+
+procedure carriere () ;
+var test:integer;
+begin
+ P_travailTour := P_travailTour +5;
+end;
+
+
+
+
+end.
