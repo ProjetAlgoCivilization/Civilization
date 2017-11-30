@@ -1,36 +1,31 @@
 unit batiment;
 
 interface
-
+procedure ferme (var P_nourritureTour : integer);
+procedure mine (var P_travailTour : integer);
+procedure carriere (var P_travailTour : integer);
+procedure caserne (var P_point : integer);
 implementation
 
-procedure mine();
-var test : integer;
+procedure mine(var P_travailTour : integer);
 begin
        P_travailTour := p_travailTour + 2;
 end;
 
 
-procedure caserne ();
-var test:integer;
+procedure caserne (var P_point : integer);
 begin
     P_point := P_point + 3 ;
 end;
 
-procedure ferme();
-var test:integer;
+procedure ferme(var P_nourritureTour : integer);
 begin
-  P_nouTour := P_nouTour +3;
-
+  P_nourritureTour := P_nourritureTour +3;
 end;
 
-procedure carriere () ;
-var test:integer;
+procedure carriere (var P_travailTour : integer) ;
 begin
- P_travailTour := P_travailTour +5;
+      P_travailTour := P_travailTour +5;
 end;
-
-
-
 
 end.
