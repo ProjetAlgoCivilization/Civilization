@@ -5,6 +5,7 @@ procedure ferme (var P_nourritureTour : integer);
 procedure mine (var P_travailTour : integer);
 procedure carriere (var P_travailTour : integer);
 procedure caserne (var P_point : integer);
+procedure étable (var P_nourritureTour : integer);
 implementation
 
 procedure mine(var P_travailTour : integer);
@@ -26,6 +27,11 @@ end;
 procedure carriere (var P_travailTour : integer) ;
 begin
       P_travailTour := P_travailTour +5;
+end;
+
+procedure étable (var P_nourritureTour : integer) ;
+begin
+      P_nourritureTour := P_nourritureTour +2;
 end;
 
 end.
