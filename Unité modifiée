@@ -103,9 +103,7 @@ begin
         end;
    if (test = 9) then
       begin
-
           finTour(P_tour, P_nourriture, P_nourritureTour, P_tourAvCroissance);
-          principal(P_nourriture, P_tour, P_nourritureTour, P_population, P_travailTour, P_tourAvCroissance, P_soldat, P_canon, P_point);
           if (P_tourAvCroissance = 0) then
           begin
                croissance(P_population, P_travailTour, P_tourAvCroissance);
@@ -256,4 +254,7 @@ begin
       P_travailTour := P_travailTour +1;
 end;
 end.
+
+
+
 
