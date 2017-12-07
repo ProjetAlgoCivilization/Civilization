@@ -8,20 +8,24 @@ program Civilization0;
 
 uses
   System.SysUtils,
-  pgPrincipal in 'pgPrincipal.pas';
-
+  pgPrincipal in 'pgPrincipal.pas',
+  batiment in 'batiment.pas',
+  amélioration in 'amélioration.pas',
+  design in 'design.pas';
 
 var
-    nourriture, tour, nourritureTour, population, travailTour, tourAvCroissance, soldat, canon, point: integer;
+    nourriture, tour, nourritureTour, population, travailTour, tourAvCroissance, soldat, canon, point, limNour: integer;
 begin
       tour:=1;
       nourriture:=0;
+      population := 1;
       nourritureTour := 1;
-      population := 1  ;
       travailTour := 1;
-      tourAvCroissance:= 10;
+      point := 0;
+      limNour := 10;
+      tourAvCroissance := 10;
 
-      menu (nourriture, tour, nourritureTour, population, travailTour, tourAvCroissance, soldat, canon, point);
+      menu (nourriture, tour, nourritureTour, population, travailTour, tourAvCroissance, soldat, canon, point, limNour);
       readln;
 
       readln;
