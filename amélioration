@@ -1,0 +1,14 @@
+unit amélioration;
+
+interface
+
+procedure étable (var P_nourritureTour : integer);
+
+implementation
+
+procedure étable (var P_nourritureTour : integer) ;
+begin
+    P_nourritureTour := P_nourritureTour +2;
+end;
+
+end.
