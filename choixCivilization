@@ -1,0 +1,245 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+{$R *.res}
+
+uses
+  System.SysUtils,
+  GestionEcran in '\\iut21\Ressources\Users\Etudiants\IQ\IQ-1\cm287047\test projet\GestionEcran.pas';
+
+var
+    test : integer;
+    civilization, capitale, dirigeant : string;
+begin
+      writeln('Choisissez parmi ces 6 civilisations');
+      writeln('1 - France');
+      writeln('2 - Allemagne');
+      writeln('3 - Russie');
+      writeln('4 - Royaume-Uni');
+      writeln('5 - États-Unis');
+      writeln('6 - Star Wars');
+      readln(test);
+      if (test =1) then
+      begin
+            civilization := 'France';
+            effacerEcran;
+            writeln('Bien. Vous êtes à présent à la tête de cette civilization : ', civilization, ' mais qui êtes vous ?');
+            writeln('1 - Napoléon Bonaparte ');
+            writeln('2 - Catherine de Médicis');
+            writeln('3 - Sylvain Durif');
+            writeln('4 - Jean-Marie Le Pen');
+            writeln('5 - Charles de Gaulle');
+            readln(test);
+            if (test =1) then  dirigeant := 'Napoléon Bonaparte';
+            if (test =2) then  dirigeant := 'Catherine de Médicis';
+            if (test =3) then  dirigeant := 'Sylvain Durif';
+            if (test =4) then  dirigeant := 'Jean -Marie Le Pen';
+            if (test =5) then  dirigeant := 'Charles de Gaulle';
+            writeln('Ah mais oui bien sûr ! Vous êtes ', dirigeant, ' ! Je ne vous avais pas reconnu !');
+            effacerEcran;
+            writeln('Quelle est votre capitale ? Je l''ai oublié malheureusement ...');
+            writeln('1 - Paris');
+            writeln('2 - Auxonne');
+            writeln('3 - Ebaty');
+            writeln('4 - Langres');
+            writeln('5 - Guingamp');
+            readln(test);
+            if (test =1) then  capitale := 'Paris';
+            if (test =2) then  capitale := 'Auxonne';
+            if (test =3) then  capitale := 'Ebaty';
+            if (test =4) then  capitale := 'Langres';
+            if (test =5) then  capitale := 'Guingamp';
+            writeln('Ah oui je me souviens maintenant ! Votre capitale est ', capitale, ' !');
+            effacerEcran;
+            writeln('Alors ' , dirigeant, ' !');
+            writeln('Votre civilization : ', civilization, ' vous attend ! Prenez vos bagages et installez vous à ',
+              capitale, ' ! La vie est belle là-bas.');
+              writeln('Puisse votre règne être long !');
+            readln;
+      end;
+      if (test =2) then
+      begin
+            civilization := 'Allemagne';
+            effacerEcran;
+            writeln('Bien. Vous êtes à présent à la tête de cette civilization : ', civilization, ' mais qui êtes vous ?');
+            writeln('1 - Frédéric 1er ');
+            writeln('2 - Otto von Bismarck');
+            writeln('3 - Angela Merckel');
+            readln(test);
+            if (test =1) then  dirigeant := 'Frédéric 1er';
+            if (test =2) then  dirigeant := 'Otto von Bismarck';
+            if (test =3) then  dirigeant := 'Angela Merckel';
+            writeln('Ah mais oui bien sûr ! Vous êtes ', dirigeant, ' ! Je ne vous avais pas reconnu !');
+            effacerEcran;
+            writeln('Quelle est votre capitale ? Je l''ai oublié malheureusement ...');
+            writeln('1 - Berlin');
+            writeln('2 - Munich');
+            writeln('3 - Ellwangen');
+            writeln('4 - Cologne');
+            writeln('5 - Francfort');
+            readln(test);
+            if (test =1) then  capitale := 'Berlin';
+            if (test =2) then  capitale := 'Munich';
+            if (test =3) then  capitale := 'Ellwangen';
+            if (test =4) then  capitale := 'Cologne';
+            if (test =5) then  capitale := 'Francfort';
+            writeln('Ah oui je me souviens maintenant ! Votre capitale est ', capitale, ' !');
+            effacerEcran;
+            writeln('Alors ' , dirigeant, ' !');
+            writeln('Votre civilization : ', civilization, ' vous attend ! Prenez vos bagages et installez vous à ',
+              capitale, ' ! La vie est belle là-bas.');
+              writeln('Puisse votre règne être long !');
+            readln;
+      end;
+      if (test =3) then
+      begin
+            civilization := 'Russie';
+            effacerEcran;
+            writeln('Bien. Vous êtes à présent à la tête de cette civilization : ', civilization, ' mais qui êtes vous ?');
+            writeln('1 - Lénine ');
+            writeln('2 - Vladimir Poutine');
+            writeln('3 - Cristaline');
+            readln(test);
+            if (test =1) then  dirigeant := 'Lénine';
+            if (test =2) then  dirigeant := 'Vladimir Poutine';
+            if (test =3) then  dirigeant := 'Cristaline';
+            writeln('Ah mais oui bien sûr ! Vous êtes ', dirigeant, ' ! Je ne vous avais pas reconnu !');
+            effacerEcran;
+            writeln('Quelle est votre capitale ? Je l''ai oublié malheureusement ...');
+            writeln('1 - Moscou');
+            writeln('2 - Saint-Pétersbourg');
+            writeln('3 - Putingrad');
+            writeln('4 - Leningrad');
+            writeln('5 - Stalingrad');
+            readln(test);
+            if (test =1) then  capitale := 'Moscou';
+            if (test =2) then  capitale := 'Saint-Pétesbourg';
+            if (test =3) then  capitale := 'Putingrad';
+            if (test =4) then  capitale := 'Leningrad';
+            if (test =5) then  capitale := 'Stalingrad';
+            writeln('Ah oui je me souviens maintenant ! Votre capitale est ', capitale, ' !');
+            effacerEcran;
+            writeln('Alors ' , dirigeant, ' !');
+            writeln('Votre civilization : ', civilization, ' vous attend ! Prenez vos bagages et installez vous à ',
+              capitale, ' ! La vie est belle là-bas.');
+              writeln('Puisse votre règne être long !');
+            readln;
+      end;
+      if (test =4) then
+      begin
+            civilization := 'Royaume-Uni';
+            effacerEcran;
+            writeln('Bien. Vous êtes à présent à la tête de cette civilization : ', civilization, ' mais qui êtes vous ?');
+            writeln('1 - Elizabeth II ');
+            writeln('2 - Sherlock Holmes');
+            writeln('3 - James Bond');
+            writeln('4 - Albus Perceval Wulfric Brian Dumbledore');
+            writeln('5 - Winston Churchill');
+            readln(test);
+            if (test =1) then  dirigeant := 'Elizabeth II';
+            if (test =2) then  dirigeant := 'Sherlock Holmes';
+            if (test =3) then  dirigeant := 'James Bond';
+            if (test = 4) then dirigeant := 'Albus Perceval Wulfric Brian Dumbledore';
+            if (test = 5) then dirigeant := 'Winston Churchill';
+            writeln('Ah mais oui bien sûr ! Vous êtes ', dirigeant, ' ! Je ne vous avais pas reconnu !');
+            effacerEcran;
+            writeln('Quelle est votre capitale ? Je l''ai oublié malheureusement ...');
+            writeln('1 - Londres');
+            writeln('2 - Baker Street');
+            writeln('3 - Liverpool');
+            writeln('4 - Poudlard');
+            writeln('5 - Edimbourg');
+            readln(test);
+            if (test =1) then  capitale := 'Londres';
+            if (test =2) then  capitale := 'Baker Street';
+            if (test =3) then  capitale := 'Liverpool';
+            if (test =4) then  capitale := 'Poudlard';
+            if (test =5) then  capitale := 'Edimbourg';
+            writeln('Ah oui je me souviens maintenant ! Votre capitale est ', capitale, ' !');
+            effacerEcran;
+            writeln('Alors ' , dirigeant, ' !');
+            writeln('Votre civilization : ', civilization, ' vous attend ! Prenez vos bagages et installez vous à ',
+            capitale, ' ! La vie est belle là-bas.');
+            writeln('Puisse votre règne être long !');
+            readln;
+      end;
+
+      if (test =5) then
+      begin
+            civilization := 'États-Unis';
+            effacerEcran;
+            writeln('Bien. Vous êtes à présent à la tête de cette civilization : ', civilization, ' mais qui êtes vous ?');
+            writeln('1 - Donald Trump ');
+            writeln('2 - Barack Obama');
+            writeln('3 - Batman');
+            writeln('4 - Abraham Lincoln');
+            writeln('5 - Marty McFly');
+            readln(test);
+            if (test =1) then  dirigeant := 'Donald Trump';
+            if (test =2) then  dirigeant := 'Barack Obama';
+            if (test =3) then  dirigeant := 'Batman';
+            if (test = 4) then dirigeant := 'Abraham Lincoln';
+            if (test = 5) then dirigeant := 'George Washington';
+            writeln('Ah mais oui bien sûr ! Vous êtes ', dirigeant, ' ! Je ne vous avais pas reconnu !');
+            effacerEcran;
+            writeln('Quelle est votre capitale ? Je l''ai oublié malheureusement ...');
+            writeln('1 - Washington');
+            writeln('2 - New York');
+            writeln('3 - Dallas');
+            writeln('4 - Lincoln');
+            writeln('5 - Gotham');
+            readln(test);
+            if (test =1) then  capitale := 'Washington';
+            if (test =2) then  capitale := 'New York';
+            if (test =3) then  capitale := 'Dallas';
+            if (test =4) then  capitale := 'Lincoln';
+            if (test =5) then  capitale := 'Gotham';
+            writeln('Ah oui je me souviens maintenant ! Votre capitale est ', capitale, ' !');
+            effacerEcran;
+            writeln('Alors ' , dirigeant, ' !');
+            writeln('Votre civilization : ', civilization, ' vous attend ! Prenez vos bagages et installez vous à ',
+            capitale, ' ! La vie est belle là-bas.');
+            writeln('Puisse votre règne être long !');
+            readln;
+      end;
+            if (test =6) then
+      begin
+            civilization := 'Star Wars';
+            effacerEcran;
+            writeln('Bien. Vous êtes à présent à la tête de cette civilization : ', civilization, ' mais qui êtes vous ?');
+            writeln('1 - Kylo Ren ');
+            writeln('2 - JarJar Binks');
+            writeln('3 - C-3PO');
+            writeln('4 - Luke Skywalker');
+            writeln('5 - Obi Wan Kenobi');
+            readln(test);
+            if (test =1) then  dirigeant := 'Kylo Ren';
+            if (test =2) then  dirigeant := 'JarJar Binks';
+            if (test =3) then  dirigeant := 'C-3PO';
+            if (test = 4) then dirigeant := 'Luke Skywalker';
+            if (test = 5) then dirigeant := 'Obi Wan Kenobi';
+            writeln('Ah mais oui bien sûr ! Vous êtes ', dirigeant, ' ! Je ne vous avais pas reconnu !');
+            effacerEcran;
+            writeln('Quelle est votre capitale ? Je l''ai oublié malheureusement ...');
+            writeln('1 - Tatooine');
+            writeln('2 - Hoth');
+            writeln('3 - Naboo');
+            writeln('4 - Coruscant');
+            writeln('5 - Aldeeran');
+            readln(test);
+            if (test =1) then  capitale := 'Tatooine';
+            if (test =2) then  capitale := 'Hoth';
+            if (test =3) then  capitale := 'Naboo';
+            if (test =4) then  capitale := 'Coruscant';
+            if (test =5) then  capitale := 'Aldeeran';
+            writeln('Ah oui je me souviens maintenant ! Votre capitale est ', capitale, ' !');
+            effacerEcran;
+            writeln('Alors ' , dirigeant, ' !');
+            writeln('Votre civilization : ', civilization, ' vous attend ! Prenez vos bagages et installez vous à ',
+            capitale, ' ! La vie est belle là-bas.');
+            writeln('Puisse votre règne être long !');
+            readln;
+      end;
+      readln;
+end.
