@@ -1,0 +1,109 @@
+unit batiment;
+
+interface
+procedure ferme (var P_nourritureTour, P_niveaux, P_nivFerme : integer ; B_construction : boolean);
+procedure mine (var P_travailTour, P_niveaux, P_nivMine : integer ; B_construction : boolean);
+procedure caserne (var P_point, P_niveaux, P_nivCaserne : integer ; B_construction : boolean);
+procedure carriere (var P_travailTour, P_niveaux, P_nivCarriere : integer ; B_construction : boolean) ;
+procedure travail (var P_travailTour, P_travailAccu, P_limTravail, P_nourritureTour, P_point, P_niveaux, P_nivFerme, P_nivMine, P_nivCaserne, P_nivCarriere, P_indiceCons : integer ; B_construction : boolean);
+
+implementation
+
+procedure mine(var P_travailTour, P_niveaux, P_nivMine : integer; B_construction : boolean);
+begin
+    P_travailTour := P_travailTour + 2;
+    P_niveaux := P_niveaux +1;
+    P_nivMine := P_nivMine +1;
+    B_construction := FALSE ;
+end;
+
+
+procedure caserne (var P_point, P_niveaux, P_nivCaserne : integer ; B_construction : boolean);
+begin
+    P_point := P_point + 3 ;
+    P_niveaux := P_niveaux +1;
+    P_nivCaserne := P_nivCaserne +1;
+    B_construction := FALSE ;
+end;
+
+procedure ferme(var P_nourritureTour, P_niveaux, P_nivFerme : integer ; B_construction : boolean);
+begin
+    P_nourritureTour := P_nourritureTour +3;
+    P_niveaux := P_niveaux +1;
+    P_nivFerme := P_nivFerme +1;
+    B_construction := FALSE ;
+end;
+
+procedure carriere (var P_travailTour, P_niveaux, P_nivCarriere : integer ; B_construction : boolean) ;
+begin
+    P_travailTour := P_travailTour +5;
+    P_niveaux := P_niveaux +1;
+    P_nivCarriere := P_nivCarriere +1;
+    B_construction := FALSE ;
+end;
+
+procedure travail (var P_travailTour, P_travailAccu, P_limTravail, P_nourritureTour, P_point, P_niveaux, P_nivFerme, P_nivMine, P_nivCaserne, P_nivCarriere, P_indiceCons : integer ; B_construction : boolean);
+begin
+     if (P_indiceCons =1) then
+     begin
+          if (P_nivFerme = 0) then P_limTravail := 20;
+          if (P_nivFerme = 1) then P_limTravail := 60;
+          if (P_nivFerme = 2) then P_limTravail := 200;
+          if (P_travailAccu <= P_limTravail) then
+          begin
+                P_travailAccu := P_travailAccu + P_travailTour;
+          end
+          else
+          begin
+              ferme(P_nourritureTour, P_niveaux, P_nivFerme, B_construction);
+              P_indiceCons :=0;
+          end;
+     end;
+     if (P_indiceCons =2) then
+     begin
+          if (P_nivMine = 0) then P_limTravail := 100;
+          if (P_nivMine = 1) then P_limTravail := 300;
+          if (P_nivMine = 2) then P_limTravail := 600;
+          if (P_travailAccu <= P_limTravail) then
+          begin
+                P_travailAccu := P_travailAccu + P_travailTour;
+          end
+          else
+          begin
+              mine(P_travailTour, P_niveaux, P_nivMine, B_construction);
+              P_indiceCons :=0;
+          end;
+     end;
+          if (P_indiceCons =3) then
+     begin
+          if (P_nivCarriere = 0) then P_limTravail := 50;
+          if (P_nivCarriere = 1) then P_limTravail := 150;
+          if (P_nivCarriere = 2) then P_limTravail := 300;
+          if (P_travailAccu <= P_limTravail) then
+          begin
+                P_travailAccu := P_travailAccu + P_travailTour;
+          end
+          else
+          begin
+              carriere(P_travailTour, P_niveaux, P_nivCarriere, B_construction);
+              P_indiceCons :=0;
+          end;
+     end;
+          if (P_indiceCons =4) then
+     begin
+          if (P_nivCaserne = 0) then P_limTravail := 50;
+          if (P_nivCaserne = 1) then P_limTravail := 150;
+          if (P_nivCaserne = 2) then P_limTravail := 300;
+          if (P_travailAccu <= P_limTravail) then
+          begin
+                P_travailAccu := P_travailAccu + P_travailTour;
+          end
+          else
+          begin
+              caserne(P_point, P_niveaux, P_nivCaserne, B_construction);
+              P_indiceCons :=0;
+          end;
+     end;
+end;
+
+end.
