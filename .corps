@@ -1,0 +1,43 @@
+program Civilization0;
+
+{$APPTYPE CONSOLE}
+
+{$R *.res}
+
+{ Menu initial }
+
+uses
+  System.SysUtils,
+  pgPrincipal in 'pgPrincipal.pas',
+  batiment in 'batiment.pas',
+  amélioration in 'amélioration.pas',
+  design in 'design.pas';
+
+var
+    nourriture, tour, nourritureTour, population, travailTour, tourAvCroissance, soldat, canon, point, limNour, niveau, nivFerme, nivCarriere, nivMine, nivCaserne, indiceCons, limTravail, travailAccu: integer;
+    construction : boolean;
+begin
+      tour:=1;
+      nourriture:=0;
+      population := 1;
+      nourritureTour := 1;
+      travailTour := 1;
+      point := 0;
+      limNour := 10;
+      tourAvCroissance := 10;
+      niveau := 0;
+      nivFerme :=0;
+      nivCaserne :=0;
+      nivMine :=0;
+      nivCarriere := 0;
+      construction := FALSE;
+      indiceCons := 0;
+      limTravail := 1;
+      travailAccu := 0;
+
+      menu (nourriture, tour, nourritureTour, population, travailTour, tourAvCroissance, soldat, canon, point, limNour, niveau, nivFerme, nivMine, nivCarriere, nivCaserne, indiceCons, limTravail, travailAccu, construction);
+      readln;
+
+      readln;
+
+end.
