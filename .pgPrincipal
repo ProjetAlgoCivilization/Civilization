@@ -1,215 +1,353 @@
+{Dans toute cette unité : la variable "test" sert à récupérer la valeur saisie par l'utilisateur.}
+
 unit pgPrincipal;
 
 interface
-   uses   GestionEcran, batiment, design;
-procedure principal(var P_nourriture,P_tour,P_nourritureTour,P_population,P_travailTour,P_tourAvCroissance,
-                        P_soldat, P_canon, P_point, P_limNour, P_niveaux, P_nivFerme, P_nivMine, P_nivCarriere, P_nivCaserne, P_indiceCons, P_limTravail, P_travailAccu :INTEGER ; B_construction : boolean);
-procedure menu (var P_nourriture,P_tour,P_nourritureTour,P_population,P_travailTour,P_tourAvCroissance,
-                    P_soldat, P_canon, P_point, P_limNour, P_niveaux, P_nivFerme, P_nivMine, P_nivCarriere, P_nivCaserne, P_indiceCons, P_limTravail, P_travailAccu :Integer ; B_construction : boolean);
-procedure capitale(var P_nourriture,P_tour,P_nourritureTour,P_population,P_travailTour,P_tourAvCroissance, P_soldat, P_canon, P_point, P_limNour, P_niveaux, P_nivFerme, P_nivMine, P_nivCarriere, P_nivCaserne, P_indiceCons, P_limTravail, P_travailAccu :Integer ; B_construction : boolean);
-procedure milit(var P_nourriture,P_tour,P_nourritureTour,P_population,P_travailTour,P_tourAvCroissance, P_soldat, P_canon, P_point, P_limNour, P_niveaux, P_nivFerme, P_nivMine, P_nivCarriere, P_nivCaserne, P_indiceCons, P_limTravail, P_travailAccu : Integer ; B_construction : boolean);
-procedure combat(var P_tour :Integer);
+  uses   GestionEcran, batiment, design;
 
-procedure finTour(var P_tour, P_nourriture, P_tourAvCroissance, P_travailTour, P_travailAccu, P_limTravail, P_nourritureTour, P_point, P_niveaux, P_nivFerme, P_nivMine, P_nivCaserne, P_nivCarriere, P_indiceCons : integer ; B_construction : boolean);
-procedure croissance(var P_population, P_travailTour, P_tourAvCroissance, P_nourriture, P_nourritureTour : integer);
+{variables :
+    P_nourritureTour : variable de type entier contenant le nombre d'unités de nourriture par tours.
+    P_nourriture : variable de type entier contenant le nombre d'unités de nourriture accumulées.
+    P_limNour : variable de type entier contenant la limite de nourriture.
+
+    P_tour : variable de type entier contenant le nombre de tours.
+    P_population : variable de type entier contenant le nombre d'habitants dans la civilisation.
+    P_tourAvCroissance : variable de type entier contenant le nombre de tours restant avant la croissance.
+
+    P_Canon : variable de type entier contenant le nombre de canons créés.
+    P_soldat : variable de type entier contenant le nombre de soldats.
+    P_point : variable de type entier contenant le nombre de points, nécessaires pour combattre.
+
+
+    P_travailTour : variable de type entier contenant le nombre d'unités de travail par tours.
+    P_travailAccu : variable de type entier contenant le nombre d'unités de travail accumulé.
+    P_limTravail : variable de type entier contenant la limite nécessaire pour construire un bâtiment.
+
+    P_niveaux : variable de type entier contenant la somme des niveaux de tous les bâtiments.
+    P_nivFerme : variable de type entier contenant le niveau de la ferme.
+    P_nivMine : variable de type entier contenant le niveau de la mine.
+    P_nivCaserne : variable de type entier contenant le niveau de la caserne.
+    P_nivCarriere : variable de type entier contenant le niveau de la carrière.
+
+    B_Construction : variable de type booléen indiquant si un bâtiment est en cours de construction ou non.
+    }
+
+  procedure principal(var P_nourriture, P_tour, P_nourritureTour, P_population, P_travailTour,
+                          P_tourAvCroissance, P_soldat, P_canon, P_point, P_limNour, P_niveaux,
+                          P_nivFerme, P_nivMine, P_nivCarriere, P_nivCaserne, P_indiceCons,
+                          P_limTravail, P_travailAccu : Integer ;
+                      var B_construction : Boolean);
+
+  procedure menu (var P_nourriture, P_tour, P_nourritureTour, P_population, P_travailTour,
+                      P_tourAvCroissance, P_soldat, P_canon, P_point, P_limNour, P_niveaux,
+                      P_nivFerme, P_nivMine, P_nivCarriere, P_nivCaserne, P_indiceCons,
+                      P_limTravail, P_travailAccu : Integer ;
+                  var B_construction : Boolean);
+
+  procedure capitale(var P_nourriture, P_tour, P_nourritureTour, P_population, P_travailTour,
+                         P_tourAvCroissance, P_soldat, P_canon, P_point, P_limNour, P_niveaux,
+                         P_nivFerme, P_nivMine, P_nivCarriere, P_nivCaserne, P_indiceCons,
+                         P_limTravail, P_travailAccu : Integer ;
+                     var B_construction : Boolean);
+
+  procedure milit(var P_nourriture, P_tour, P_nourritureTour, P_population, P_travailTour,
+                      P_tourAvCroissance, P_soldat, P_canon, P_point, P_limNour, P_niveaux,
+                      P_nivFerme, P_nivMine, P_nivCarriere, P_nivCaserne, P_indiceCons,
+                      P_limTravail, P_travailAccu : Integer ;
+                  var B_construction : Boolean);
+
+  procedure combat(var P_tour :Integer);
+
+  procedure finTour(var P_tour, P_nourriture, P_tourAvCroissance, P_travailTour, P_travailAccu,
+                        P_limTravail, P_nourritureTour, P_point, P_niveaux, P_nivFerme,
+                        P_nivMine, P_nivCaserne, P_nivCarriere, P_indiceCons : Integer ;
+                    var B_construction : Boolean);
+
+  procedure croissance(var P_population, P_travailTour, P_tourAvCroissance, P_nourriture,
+                           P_nourritureTour : integer);
 
 implementation
+{Cette procédure s'occupe de la partie militaire du jeu}
 
-procedure milit(var P_nourriture,P_tour,P_nourritureTour,P_population,P_travailTour,P_tourAvCroissance, P_soldat, P_canon, P_point, P_limNour, P_niveaux, P_nivFerme, P_nivMine, P_nivCarriere, P_nivCaserne, P_indiceCons, P_limTravail, P_travailAccu : Integer ; B_construction : boolean);
-var test : Integer;
-
-begin
-       effacerEcran;
-       D_militaire(P_nourriture,P_tour,P_nourritureTour,P_population,P_travailTour,P_tourAvCroissance, P_soldat, P_canon, P_point, P_limNour, B_construction);
-       readln(test);
-       //if ((test = 1) OR (test =2)) then
-       if ((test = 3) OR (test =4)) then combat(P_tour);
-       if (test = 0) then  principal(P_nourriture,P_tour,P_nourritureTour,P_population,P_travailTour,P_tourAvCroissance, P_soldat, P_canon, P_point, P_limNour, P_niveaux, P_nivFerme, P_nivMine, P_nivCarriere, P_nivCaserne, P_indiceCons, P_limTravail, P_travailAccu, B_construction);
-       if (test < 0) or (test > 4) then
-        begin
-            effacerEcran;
-            milit(P_nourriture,P_tour,P_nourritureTour,P_population,P_travailTour,P_tourAvCroissance, P_soldat, P_canon, P_point, P_limNour, P_niveaux, P_nivFerme, P_nivMine, P_nivCarriere, P_nivCaserne, P_indiceCons, P_limTravail, P_travailAccu, B_construction);
-        end;
-end;
-
-procedure principal(var P_nourriture, P_tour, P_nourritureTour, P_population, P_travailTour, P_tourAvCroissance,
-                        P_soldat, P_canon, P_point, P_limNour, P_niveaux, P_nivFerme, P_nivMine, P_nivCarriere, P_nivCaserne, P_indiceCons, P_limTravail, P_travailAccu :INTEGER ; B_construction : boolean);
- var test: Integer;
-
-begin
-   effacerEcran;
-   D_principal(P_nourriture, P_tour, P_nourritureTour, P_population, P_travailTour, P_tourAvCroissance,
-                        P_soldat, P_canon, P_point, P_limNour, B_construction);
-   readln(test);
-
-   if (test = 1) then capitale(P_nourriture,P_tour,P_nourritureTour,P_population,P_travailTour,P_tourAvCroissance, P_soldat, P_canon, P_point, P_limNour, P_niveaux, P_nivFerme, P_nivMine, P_nivCarriere, P_nivCaserne, P_indiceCons, P_limTravail, P_travailAccu, B_construction);
-   if (test = 2) then milit(P_nourriture,P_tour,P_nourritureTour,P_population,P_travailTour,P_tourAvCroissance, P_soldat, P_canon, P_point, P_limNour, P_niveaux, P_nivFerme, P_nivMine, P_nivCarriere, P_nivCaserne, P_indiceCons, P_limTravail, P_travailAccu, B_construction);
-   if (test = 0) then menu (P_nourriture,P_tour,P_nourritureTour,P_population,P_travailTour,P_tourAvCroissance,
-                      P_soldat, P_canon, P_point, P_limNour, P_niveaux, P_nivFerme, P_nivMine, P_nivCarriere, P_nivCaserne, P_indiceCons, P_limTravail, P_travailAccu, B_construction);
-   if (test < 0) OR (test > 2) AND (test <> 9) then
-        begin
-            effacerEcran;
-            principal(P_nourriture, P_tour, P_nourritureTour, P_population, P_travailTour, P_tourAvCroissance, P_soldat, P_canon, P_point, P_limNour, P_niveaux, P_nivFerme, P_nivMine, P_nivCarriere, P_nivCaserne, P_indiceCons, P_limTravail, P_travailAccu, B_construction);
-        end;
-   if (test = 9) then
-      begin
-          finTour(P_tour, P_nourriture, P_tourAvCroissance, P_travailTour, P_travailAccu, P_limTravail, P_nourritureTour, P_point, P_niveaux, P_nivFerme, P_nivMine, P_nivCaserne, P_nivCarriere, P_indiceCons, B_construction);
-          if (P_tourAvCroissance = 0) then
-          begin
-               croissance(P_population, P_travailTour, P_tourAvCroissance, P_nourriture, P_nourritureTour);
-               if (P_population = 2) then
-               begin
-                   P_limNour := 50;
-                   P_tourAvCroissance := 17;
-               end;
-               if (P_population = 3) then P_limNour := 200;
-               if (P_population = 4) then P_limNour := 450;
-               if (P_population = 5) then P_limNour := 800;
-               if (P_population = 6) then P_limNour := 1250;
-          end;
-          principal(P_nourriture, P_tour, P_nourritureTour, P_population, P_travailTour, P_tourAvCroissance, P_soldat, P_canon, P_point, P_limNour, P_niveaux, P_nivFerme, P_nivMine, P_nivCarriere, P_nivCaserne, P_indiceCons, P_limTravail, P_travailAccu, B_construction);
-      end;
-end;
-
-
-
-procedure menu (var P_nourriture,P_tour,P_nourritureTour,P_population,P_travailTour,P_tourAvCroissance, P_soldat, P_canon, P_point, P_limNour, P_niveaux, P_nivFerme, P_nivMine, P_nivCarriere, P_nivCaserne, P_indiceCons, P_limTravail, P_travailAccu :Integer ; B_construction : boolean);
-   var test: Integer;
-begin
-       effacerEcran;
-       D_menu(P_nourriture,P_tour,P_nourritureTour,P_population,P_travailTour,P_tourAvCroissance, P_soldat, P_canon, P_point, P_limNour, B_construction);
-       readln(test);
-       if (test = 1) then principal(P_nourriture,P_tour,P_nourritureTour,P_population,P_travailTour,P_tourAvCroissance, P_soldat, P_canon, P_point, p_limNour, P_niveaux, P_nivFerme, P_nivMine, P_nivCarriere, P_nivCaserne, P_indiceCons, P_limTravail, P_travailAccu, B_construction);
-       if (test = 2) then
-       begin
-       effacerEcran;
-       writeln('Merci d''avoir joué. Pour quitter définitivement le jeu pressez 2 fois la touche " Entrée"');
-       end;
-       if (test < 1) or (test > 2) then
-        begin
-            effacerEcran;
-            menu (P_nourriture,P_tour,P_nourritureTour,P_population,P_travailTour,P_tourAvCroissance, P_soldat, P_canon, P_point, P_limNour, P_niveaux, P_nivFerme, P_nivMine, P_nivCarriere, P_nivCaserne, P_indiceCons, P_limTravail, P_travailAccu, B_construction);
-        end;
-end;
-
-procedure capitale(var P_nourriture,P_tour,P_nourritureTour,P_population,P_travailTour,P_tourAvCroissance, P_soldat, P_canon, P_point, P_limNour, P_niveaux, P_nivFerme, P_nivMine, P_nivCarriere, P_nivCaserne, P_indiceCons, P_limTravail, P_travailAccu :Integer ; B_construction : boolean);
+  procedure milit(var P_nourriture, P_tour, P_nourritureTour, P_population, P_travailTour,
+                      P_tourAvCroissance, P_soldat, P_canon, P_point, P_limNour, P_niveaux,
+                      P_nivFerme, P_nivMine, P_nivCarriere, P_nivCaserne, P_indiceCons,
+                      P_limTravail, P_travailAccu : Integer ;
+                  var B_construction : boolean);
   var test : Integer;
-begin
-  effacerEcran;
-  D_capitale(P_nourriture,P_tour,P_nourritureTour,P_population,P_travailTour,P_tourAvCroissance, P_soldat, P_canon, P_point, P_limNour, B_construction);
-  readln(test);
-  if(test=0) then principal(P_nourriture,P_tour,P_nourritureTour,P_population,P_travailTour,P_tourAvCroissance, P_soldat, P_canon, P_point, P_limNour, P_niveaux, P_nivFerme, P_nivMine, P_nivCarriere, P_nivCaserne, P_indiceCons, P_limTravail, P_travailAccu, B_construction);
-  if (B_construction = FALSE) then
+
   begin
-      if (P_niveaux < P_Population) then
-      begin
-            if(test=1) then
-            begin
-                  if (P_nivFerme < 3) then
-                  begin
-                      B_construction := TRUE;
-                      P_indiceCons := 1;
-                       capitale(P_nourriture,P_tour,P_nourritureTour,P_population,P_travailTour,P_tourAvCroissance, P_soldat, P_canon, P_point, P_limNour, P_niveaux, P_nivFerme, P_nivMine, P_nivCarriere, P_nivCaserne, P_indiceCons, P_limTravail, P_travailAccu, B_construction);
-                  end
-                  else
-                  begin
-                        writeln('Erreur : Votre ferme a atteint le niveau maximum');
-                        readln;
-                        capitale(P_nourriture,P_tour,P_nourritureTour,P_population,P_travailTour,P_tourAvCroissance, P_soldat, P_canon, P_point, P_limNour, P_niveaux, P_nivFerme, P_nivMine, P_nivCarriere, P_nivCaserne, P_indiceCons, P_limTravail, P_travailAccu, B_construction);
-                  end;
-            end;
-            if(test=2) then
-            begin
-                  if (P_nivMine < 3) then
-                  begin
-                      B_construction := TRUE;
-                      P_indiceCons := 2;
-                      capitale(P_nourriture,P_tour,P_nourritureTour,P_population,P_travailTour,P_tourAvCroissance, P_soldat, P_canon, P_point, P_limNour, P_niveaux, P_nivFerme, P_nivMine, P_nivCarriere, P_nivCaserne, P_indiceCons, P_limTravail, P_travailAccu, B_construction);
-                  end
-                  else
-                  begin
-                        writeln('Erreur : Votre mine a atteint le niveau maximum');
-                        readln;
-                        capitale(P_nourriture,P_tour,P_nourritureTour,P_population,P_travailTour,P_tourAvCroissance, P_soldat, P_canon, P_point, P_limNour, P_niveaux, P_nivFerme, P_nivMine, P_nivCarriere, P_nivCaserne, P_indiceCons, P_limTravail, P_travailAccu, B_construction);
-                  end;
-            end;
-            if(test = 3) then
-            begin
-                  if (P_nivCarriere < 3) then
-                  begin
-                      B_construction := TRUE;
-                      P_indiceCons := 3;
-                      capitale(P_nourriture,P_tour,P_nourritureTour,P_population,P_travailTour,P_tourAvCroissance, P_soldat, P_canon, P_point, P_limNour, P_niveaux, P_nivFerme, P_nivMine, P_nivCarriere, P_nivCaserne, P_indiceCons, P_limTravail, P_travailAccu, B_construction);
-                  end
-                  else
-                  begin
-                        writeln('Erreur : Votre carière a attent le niveau maximum');
-                        readln;
-                        capitale(P_nourriture,P_tour,P_nourritureTour,P_population,P_travailTour,P_tourAvCroissance, P_soldat, P_canon, P_point, P_limNour, P_niveaux, P_nivFerme, P_nivMine, P_nivCarriere, P_nivCaserne, P_indiceCons, P_limTravail, P_travailAccu, B_construction);
-                  end;
-            end;
-            if (test = 4) then
-            begin
-                  if (P_nivCaserne < 3) then
-                  begin
-                      B_construction := TRUE;
-                      P_indiceCons := 4;
-                      capitale(P_nourriture,P_tour,P_nourritureTour,P_population,P_travailTour,P_tourAvCroissance, P_soldat, P_canon, P_point, P_limNour, P_niveaux, P_nivFerme, P_nivMine, P_nivCarriere, P_nivCaserne, P_indiceCons, P_limTravail, P_travailAccu, B_construction);
-                  end
-                  else
-                  begin
-                        writeln('Erreur : Votre caserne a atteint le niveau maximum');
-                        readln;
-                        capitale(P_nourriture,P_tour,P_nourritureTour,P_population,P_travailTour,P_tourAvCroissance, P_soldat, P_canon, P_point, P_limNour, P_niveaux, P_nivFerme, P_nivMine, P_nivCarriere, P_nivCaserne, P_indiceCons, P_limTravail, P_travailAccu, B_construction);
-                  end;
-            end;
-      end
-      else
-      begin
-            writeln('Erreur : Votre niveau de population est trop faible.');
-            readln;
-            capitale(P_nourriture,P_tour,P_nourritureTour,P_population,P_travailTour,P_tourAvCroissance, P_soldat, P_canon, P_point, P_limNour, P_niveaux, P_nivFerme, P_nivMine, P_nivCarriere, P_nivCaserne, P_indiceCons, P_limTravail, P_travailAccu, B_construction);
-      end;
-  end
-  else
-  begin
-       writeln('Erreur : une construction est déjà en cours');
-       readln;
-       capitale(P_nourriture,P_tour,P_nourritureTour,P_population,P_travailTour,P_tourAvCroissance, P_soldat, P_canon, P_point, P_limNour, P_niveaux, P_nivFerme, P_nivMine, P_nivCarriere, P_nivCaserne, P_indiceCons, P_limTravail, P_travailAccu, B_construction);
+         effacerEcran;
+         D_militaire(P_nourriture,P_tour, P_nourritureTour, P_population, P_travailTour,
+                     P_tourAvCroissance, P_soldat, P_canon, P_point, P_limNour, B_construction);
+         // On appelle la procédure D_militaire qui est l'affichage de l'écran.
+         readln(test);
+         //if ((test = 1) OR (test =2)) then
+         if ((test = 3) OR (test =4)) then combat(P_tour); //si le joueur entre 3 ou 4 on va sur l'écran combat
+         if (test = 0) then  principal(P_nourriture, P_tour, P_nourritureTour, P_population, P_travailTour,
+                                       P_tourAvCroissance, P_soldat, P_canon, P_point, P_limNour,
+                                       P_niveaux, P_nivFerme, P_nivMine, P_nivCarriere, P_nivCaserne,
+                                       P_indiceCons, P_limTravail, P_travailAccu, B_construction);
+         //Si le joueur entre 0, on retourne sur l'écran principal
+
+         if (test < 0) or (test > 4) then //On relance l'écran si le joueur n'entre pas un numéro qui donne suite à une action.
+          begin
+              effacerEcran;
+              milit(P_nourriture, P_tour, P_nourritureTour, P_population, P_travailTour, P_tourAvCroissance,
+                    P_soldat, P_canon, P_point, P_limNour, P_niveaux, P_nivFerme, P_nivMine, P_nivCarriere,
+                    P_nivCaserne, P_indiceCons, P_limTravail, P_travailAccu, B_construction);
+          end;
   end;
-  if (test < 0) or (test > 4) then
+
+ {Cette procédure s'occupe de l'écran principal }
+
+  procedure principal(var P_nourriture, P_tour, P_nourritureTour, P_population, P_travailTour, P_tourAvCroissance,
+                          P_soldat, P_canon, P_point, P_limNour, P_niveaux, P_nivFerme,
+                          P_nivMine, P_nivCarriere, P_nivCaserne, P_indiceCons, P_limTravail,
+                          P_travailAccu :INTEGER ;
+                      var B_construction : boolean);
+   var test: Integer;
+
   begin
-      effacerEcran;
-      capitale(P_nourriture,P_tour,P_nourritureTour,P_population,P_travailTour,P_tourAvCroissance, P_soldat, P_canon, P_point, P_limNour, P_niveaux, P_nivFerme, P_nivMine, P_nivCarriere, P_nivCaserne, P_indiceCons, P_limTravail, P_travailAccu, B_construction);
+     effacerEcran;
+     D_principal(P_nourriture, P_tour, P_nourritureTour, P_population, P_travailTour,
+                 P_tourAvCroissance, P_soldat, P_canon, P_point, P_limNour, B_construction);
+     // On appelle la procédure D_principal qui est l'affichage de l'écran.
+     readln(test);
+     if (test = 1) then capitale(P_nourriture, P_tour, P_nourritureTour, P_population, P_travailTour, P_tourAvCroissance,
+                                 P_soldat, P_canon, P_point, P_limNour, P_niveaux, P_nivFerme, P_nivMine, P_nivCarriere,
+                                 P_nivCaserne, P_indiceCons, P_limTravail, P_travailAccu, B_construction);
+     //Si le joueur entre 1 on va sur l'écran de la capitale.
+     if (test = 2) then milit(P_nourriture, P_tour, P_nourritureTour, P_population, P_travailTour, P_tourAvCroissance,
+                              P_soldat, P_canon, P_point, P_limNour, P_niveaux, P_nivFerme, P_nivMine, P_nivCarriere,
+                              P_nivCaserne, P_indiceCons, P_limTravail, P_travailAccu, B_construction);
+     //Si le joueur entre 2 on va sur l'écran militaire.
+     if (test = 0) then menu (P_nourriture, P_tour, P_nourritureTour, P_population, P_travailTour, P_tourAvCroissance,
+                              P_soldat, P_canon, P_point, P_limNour, P_niveaux, P_nivFerme, P_nivMine, P_nivCarriere,
+                              P_nivCaserne, P_indiceCons, P_limTravail, P_travailAccu, B_construction);
+     //Si le joueur entre 0 on retourne sur le menu.
+     if (test < 0) OR (test > 2) AND (test <> 9) then //On relance l'écran si le joueur n'entre pas un numéro qui donne suite à une action.
+          begin
+              effacerEcran;
+              principal(P_nourriture, P_tour, P_nourritureTour, P_population, P_travailTour, P_tourAvCroissance,
+                        P_soldat, P_canon, P_point, P_limNour, P_niveaux, P_nivFerme, P_nivMine, P_nivCarriere,
+                        P_nivCaserne, P_indiceCons, P_limTravail, P_travailAccu, B_construction);
+          end;
+     if (test = 9) then // si le joueur appuie sur 9 alors le tour se termine.
+        begin
+            finTour(P_tour, P_nourriture, P_tourAvCroissance, P_travailTour, P_travailAccu,
+                    P_limTravail, P_nourritureTour, P_point, P_niveaux, P_nivFerme, P_nivMine,
+                    P_nivCaserne, P_nivCarriere, P_indiceCons, B_construction);
+            if (P_tourAvCroissance = 0) AND (nourriture >=0) then
+        //Si le tour avant croissance = 0 cela signifie que la croissance peut se faire
+            begin
+                 croissance(P_population, P_travailTour, P_tourAvCroissance, P_nourriture, P_nourritureTour);
+                 if (P_population = 2) then
+                 begin
+                     P_limNour := 50;
+                     P_tourAvCroissance := 17;
+                 end;
+                 if (P_population = 3) then P_limNour := 200;
+                 if (P_population = 4) then P_limNour := 450;
+                 if (P_population = 5) then P_limNour := 800;
+                 if (P_population = 6) then P_limNour := 1250;
+            end;
+            principal(P_nourriture, P_tour, P_nourritureTour, P_population, P_travailTour, P_tourAvCroissance,
+                      P_soldat, P_canon, P_point, P_limNour, P_niveaux, P_nivFerme, P_nivMine, P_nivCarriere,
+                      P_nivCaserne, P_indiceCons, P_limTravail, P_travailAccu, B_construction);
+        end;
   end;
-end;
 
-procedure combat(var P_tour :Integer);
+  {Cette procédure s'occupe de l'écran d'accueil }
 
-begin
-  effacerEcran;
-  D_combat(P_tour);
-  readln;
-end;
+  procedure menu (var P_nourriture, P_tour, P_nourritureTour, P_population, P_travailTour, P_tourAvCroissance,
+                      P_soldat, P_canon, P_point, P_limNour, P_niveaux, P_nivFerme, P_nivMine, P_nivCarriere,
+                      P_nivCaserne, P_indiceCons, P_limTravail, P_travailAccu : Integer ;
+                  var B_construction : Boolean);
+     var test: Integer;
+  begin
+         effacerEcran;
+         D_menu(P_nourriture, P_tour, P_nourritureTour, P_population, P_travailTour, P_tourAvCroissance, P_soldat,
+                P_canon, P_point, P_limNour, B_construction);
+         // On appelle la procédure D_menu qui affiche l'écran du menu
+         readln(test);
+         if (test = 1) then principal(P_nourriture, P_tour, P_nourritureTour, P_population, P_travailTour,
+                                      P_tourAvCroissance, P_soldat, P_canon, P_point, p_limNour, P_niveaux,
+                                      P_nivFerme, P_nivMine, P_nivCarriere, P_nivCaserne, P_indiceCons, P_limTravail,
+                                      P_travailAccu, B_construction);
+         //Le joueur souhaite jouer alors on va sur l'écran principal.
+         if (test = 2) then //Le joueur souhaite quitter le jeu.
+         begin
+         effacerEcran;
+         writeln('Merci d''avoir joué. Pour quitter définitivement le jeu pressez 2 fois la touche " Entrée"');
+         end;
+         if (test < 1) or (test > 2) then //On relance l'écran si le joueur n'entre pas un numéro qui donne suite à une action.
+          begin
+              effacerEcran;
+              menu (P_nourriture, P_tour, P_nourritureTour, P_population, P_travailTour, P_tourAvCroissance,
+                    P_soldat, P_canon, P_point, P_limNour, P_niveaux, P_nivFerme, P_nivMine, P_nivCarriere,
+                    P_nivCaserne, P_indiceCons, P_limTravail, P_travailAccu, B_construction);
+          end;
+  end;
 
-procedure finTour(var P_tour, P_nourriture, P_tourAvCroissance, P_travailTour, P_travailAccu, P_limTravail, P_nourritureTour, P_point, P_niveaux, P_nivFerme, P_nivMine, P_nivCaserne, P_nivCarriere, P_indiceCons : integer ; B_construction : boolean);
-begin
-      P_tour := P_tour + 1;
-      P_nourriture := P_nourriture + P_nourritureTour;
-      P_tourAvCroissance := P_tourAvCroissance - 1;
-      travail (P_travailTour, P_travailAccu, P_limTravail, P_nourritureTour, P_point, P_niveaux, P_nivFerme, P_nivMine, P_nivCaserne, P_nivCarriere, P_indiceCons, B_construction);
+  {Cette procédure s'occupe de la capitale }
 
-end;
+  procedure capitale(var P_nourriture, P_tour, P_nourritureTour, P_population, P_travailTour, P_tourAvCroissance,
+                         P_soldat, P_canon, P_point, P_limNour, P_niveaux, P_nivFerme, P_nivMine, P_nivCarriere,
+                         P_nivCaserne, P_indiceCons, P_limTravail, P_travailAccu :Integer ;
+                     var B_construction : boolean);
+    var test : Integer;
 
-procedure croissance(var P_population, P_travailTour, P_tourAvCroissance, P_nourriture, P_nourritureTour : integer);
-begin
-      P_population := P_population + 1;
-      P_travailTour := P_travailTour +1;
-      P_nourritureTour := P_nourritureTour - 1;
-      P_nourriture := 0;
-end;
+  begin
+    effacerEcran;
+    D_capitale(P_nourriture, P_tour, P_nourritureTour, P_population, P_travailTour, P_tourAvCroissance, P_soldat,
+               P_canon, P_point, P_limNour, B_construction);
+    readln(test);
+    if(test=0) then principal(P_nourriture, P_tour, P_nourritureTour, P_population, P_travailTour, P_tourAvCroissance,
+                              P_soldat, P_canon, P_point, P_limNour, P_niveaux, P_nivFerme, P_nivMine, P_nivCarriere,
+                              P_nivCaserne, P_indiceCons, P_limTravail, P_travailAccu, B_construction);
+    // Si le joueur entre 0, on retourne sur l'écran principal.
 
-end.
+    if (B_construction = FALSE) then //Si aucun bâtiment est en construction alors on peut en construire ou en améliorer un.
+    begin
+        if (P_niveaux < P_Population) then // Si la somme des niveaux des bâtiments est inférieure ou égale à la population alors on peut construire ou améliorer bâtiment.
+        begin
+              if(test=1) then // Le joueur souhaite construire la ferme
+              begin
+                    if (P_nivFerme < 3) then // Si le niveau de la ferme est inférieur strictement au niveau maximum alors on peut lancer la construction ou l'amélioration.
+                    begin
+                        B_construction := TRUE; // La construction est lancée
+                        P_indiceCons := 1;      // L'indice de construction est à égal à 1 (cf procedure travail)
+                         capitale(P_nourriture, P_tour, P_nourritureTour, P_population, P_travailTour, P_tourAvCroissance,
+                                  P_soldat, P_canon, P_point, P_limNour, P_niveaux, P_nivFerme, P_nivMine, P_nivCarriere,
+                                  P_nivCaserne, P_indiceCons, P_limTravail, P_travailAccu, B_construction);
+                    // On affiche à nouveau l'écran de la capitale
+                    end
+                    else // Si le niveau de la ferme est égal au niveau maximum alors on affiche un message d'erreur
+                    begin
+                          writeln('Erreur : Votre ferme a atteint le niveau maximum');
+                          readln;
+                          capitale(P_nourriture,P_tour,P_nourritureTour,P_population,P_travailTour,P_tourAvCroissance, P_soldat, P_canon, P_point, P_limNour, P_niveaux, P_nivFerme, P_nivMine, P_nivCarriere, P_nivCaserne, P_indiceCons, P_limTravail, P_travailAccu, B_construction);
+                    end;
+              end;
+              if(test=2) then // Même principe mais cette fois le joueur souhaite construire la mine
+              begin
+                    if (P_nivMine < 3) then
+                    begin
+                        B_construction := TRUE;
+                        P_indiceCons := 2;
+                        capitale(P_nourriture, P_tour, P_nourritureTour, P_population, P_travailTour, P_tourAvCroissance,
+                                 P_soldat, P_canon, P_point, P_limNour, P_niveaux, P_nivFerme, P_nivMine, P_nivCarriere,
+                                 P_nivCaserne, P_indiceCons, P_limTravail, P_travailAccu, B_construction);
+                    end
+                    else
+                    begin
+                          writeln('Erreur : Votre mine a atteint le niveau maximum');
+                          readln;
+                          capitale(P_nourriture, P_tour, P_nourritureTour, P_population, P_travailTour, P_tourAvCroissance,
+                                  P_soldat, P_canon, P_point, P_limNour, P_niveaux, P_nivFerme, P_nivMine, P_nivCarriere,
+                                  P_nivCaserne, P_indiceCons, P_limTravail, P_travailAccu, B_construction);
+                    end;
+              end;
+              if(test = 3) then // Même principe mais cette fois le joueur souhaite construire la carrière
+              begin
+                    if (P_nivCarriere < 3) then
+                    begin
+                        B_construction := TRUE;
+                        P_indiceCons := 3;
+                        capitale(P_nourriture, P_tour, P_nourritureTour, P_population, P_travailTour, P_tourAvCroissance,
+                                 P_soldat, P_canon, P_point, P_limNour, P_niveaux, P_nivFerme, P_nivMine, P_nivCarriere,
+                                 P_nivCaserne, P_indiceCons, P_limTravail, P_travailAccu, B_construction);
+                    end
+                    else
+                    begin
+                          writeln('Erreur : Votre carière a attent le niveau maximum');
+                          readln;
+                          capitale(P_nourriture, P_tour, P_nourritureTour, P_population, P_travailTour, P_tourAvCroissance,
+                                  P_soldat, P_canon, P_point, P_limNour, P_niveaux, P_nivFerme, P_nivMine, P_nivCarriere,
+                                  P_nivCaserne, P_indiceCons, P_limTravail, P_travailAccu, B_construction);
+                    end;
+              end;
+              if (test = 4) then  // Même principe mais cette fois le joueur souhaite construire la caserne
+              begin
+                    if (P_nivCaserne < 3) then
+                    begin
+                        B_construction := TRUE;
+                        P_indiceCons := 4;
+                        capitale(P_nourriture, P_tour, P_nourritureTour, P_population, P_travailTour, P_tourAvCroissance,
+                                 P_soldat, P_canon, P_point, P_limNour, P_niveaux, P_nivFerme, P_nivMine, P_nivCarriere,
+                                 P_nivCaserne, P_indiceCons, P_limTravail, P_travailAccu, B_construction);
+                    end
+                    else
+                    begin
+                          writeln('Erreur : Votre caserne a atteint le niveau maximum');
+                          readln;
+                          capitale(P_nourriture, P_tour, P_nourritureTour, P_population, P_travailTour, P_tourAvCroissance,
+                                   P_soldat, P_canon, P_point, P_limNour, P_niveaux, P_nivFerme, P_nivMine, P_nivCarriere,
+                                   P_nivCaserne, P_indiceCons, P_limTravail, P_travailAccu, B_construction);
+                    end;
+              end;
+        end
+        else // Si la somme de niveaux est supérieur à celui de la population alors on affiche un message d'erreur
+        begin
+              writeln('Erreur : Votre niveau de population est trop faible.');
+              readln;
+              capitale(P_nourriture,P_tour,P_nourritureTour,P_population,P_travailTour,P_tourAvCroissance, P_soldat, P_canon, P_point, P_limNour, P_niveaux, P_nivFerme, P_nivMine, P_nivCarriere, P_nivCaserne, P_indiceCons, P_limTravail, P_travailAccu, B_construction);
+        end;
+    end
+    else // Si une construction est déjà en cours on affiche un message d'erreur
+    begin
+         writeln('Erreur : une construction est déjà en cours');
+         readln;
+         capitale(P_nourriture, P_tour, P_nourritureTour, P_population, P_travailTour, P_tourAvCroissance,
+                  P_soldat, P_canon, P_point, P_limNour, P_niveaux, P_nivFerme, P_nivMine, P_nivCarriere,
+                  P_nivCaserne, P_indiceCons, P_limTravail, P_travailAccu, B_construction);
+    end;
+    if (test < 0) or (test > 4) then //On relance l'écran si le joueur n'entre pas un numéro qui donne suite à une action.
+    begin
+        effacerEcran;
+        capitale(P_nourriture, P_tour, P_nourritureTour, P_population, P_travailTour, P_tourAvCroissance,
+                 P_soldat, P_canon, P_point, P_limNour, P_niveaux, P_nivFerme, P_nivMine, P_nivCarriere,
+                 P_nivCaserne, P_indiceCons, P_limTravail, P_travailAccu, B_construction);
+    end;
+  end;
+
+  { Cette procédure gère la partie combat }
+
+  procedure combat(var P_tour :Integer);
+
+  begin
+    effacerEcran;
+    D_combat(P_tour);
+    readln;
+  end;
+
+  {Cette procédure gère la fin de tour }
+
+  procedure finTour(var P_tour, P_nourriture, P_tourAvCroissance, P_travailTour, P_travailAccu, P_limTravail,
+                        P_nourritureTour, P_point, P_niveaux, P_nivFerme, P_nivMine, P_nivCaserne, P_nivCarriere,
+                        P_indiceCons : Integer ;
+                    var B_construction : Boolean);
+  begin
+        P_tour := P_tour + 1;                            // On incrémente le nombre de tours de 1
+        P_nourriture := P_nourriture + P_nourritureTour; // On ajoute le nombre d'unités de nourriture par tour à la somme de la nourriture.
+        P_tourAvCroissance := P_tourAvCroissance - 1;    // On enlève 1 au nombre de tours avant croissance.
+        travail (P_travailTour, P_travailAccu, P_limTravail, P_nourritureTour, P_point, P_niveaux, P_nivFerme,
+                 P_nivMine, P_nivCaserne, P_nivCarriere, P_indiceCons, B_construction);
+        // On appelle la procédure travail au cas où le joueur lance une construction ou amélioration.
+  end;
+
+  {Cette procédure gère la croissance }
+
+  procedure croissance(var P_population, P_travailTour, P_tourAvCroissance, P_nourriture, P_nourritureTour : integer);
+  begin
+        P_population := P_population + 1;          // La population est incrémentée de 1
+        P_travailTour := P_travailTour +1;         // Le travail par tour est incrémenté de 1
+        P_nourritureTour := P_nourritureTour - 1;  // La nourriture par tour diminue de 1
+        P_nourriture := 0;                         // La nourriture est égale à 0
+  end;
+
+  end.
 
 
 
