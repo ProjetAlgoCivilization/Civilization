@@ -1,109 +1,162 @@
 unit batiment;
 
 interface
-procedure ferme (var P_nourritureTour, P_niveaux, P_nivFerme : integer ; B_construction : boolean);
-procedure mine (var P_travailTour, P_niveaux, P_nivMine : integer ; B_construction : boolean);
-procedure caserne (var P_point, P_niveaux, P_nivCaserne : integer ; B_construction : boolean);
-procedure carriere (var P_travailTour, P_niveaux, P_nivCarriere : integer ; B_construction : boolean) ;
-procedure travail (var P_travailTour, P_travailAccu, P_limTravail, P_nourritureTour, P_point, P_niveaux, P_nivFerme, P_nivMine, P_nivCaserne, P_nivCarriere, P_indiceCons : integer ; B_construction : boolean);
+
+{variables :
+    P_nourritureTour : variable de type entier contenant le nombre d'unités de nourriture par tours.
+    P_point : variable de type entier contenant le nombre de points, nécessaires pour combattre.
+
+    P_travailTour : variable de type entier contenant le nombre d'unités de travail par tours.
+    P_travailAccu : variable de type entier contenant le nombre d'unités de travail accumulé.
+    P_limTravail : variable de type entier contenant la limite nécessaire pour construire un bâtiment.
+
+    P_niveaux : variable de type entier contenant la somme des niveaux de tous les bâtiments.
+    P_nivFerme : variable de type entier contenant le niveau de la ferme.
+    P_nivMine : variable de type entier contenant le niveau de la mine.
+    P_nivCaserne : variable de type entier contenant le niveau de la caserne.
+    P_nivCarriere : variable de type entier contenant le niveau de la carrière.
+
+    B_Construction : variable de type booléen indiquant si un bâtiment est en cours de construction ou non.
+}
+
+  procedure ferme (var P_nourritureTour, P_niveaux, P_nivFerme : integer ;
+                   var B_construction : boolean);
+
+  procedure mine (var P_travailTour, P_niveaux, P_nivMine : integer ;
+                  var B_construction : boolean);
+
+  procedure caserne (var P_point, P_niveaux, P_nivCaserne : integer ;
+                     var B_construction : boolean);
+
+  procedure carriere (var P_travailTour, P_niveaux, P_nivCarriere : integer ;
+                      var B_construction : boolean) ;
+
+  procedure travail (var P_travailTour, P_travailAccu, P_limTravail, P_nourritureTour,
+                         P_point, P_niveaux, P_nivFerme, P_nivMine, P_nivCaserne,
+                         P_nivCarriere, P_indiceCons : integer ;
+                     var B_construction : boolean);
 
 implementation
 
-procedure mine(var P_travailTour, P_niveaux, P_nivMine : integer; B_construction : boolean);
-begin
-    P_travailTour := P_travailTour + 2;
-    P_niveaux := P_niveaux +1;
-    P_nivMine := P_nivMine +1;
-    B_construction := FALSE ;
-end;
+  {Cette procédure agit une fois que la mine a fini sa construction.}
 
+  procedure mine(var P_travailTour, P_niveaux, P_nivMine : integer;
+                 var B_construction : boolean);
+  begin
+      P_travailTour := P_travailTour + 2; // Le joueur obtient 2 unités supplémentaires en travail par tour.
+      P_niveaux := P_niveaux +1;          // Le nombre de niveaux de chacun des bâtiments est incrémenté de 1
+      P_nivMine := P_nivMine +1;          // Le nombre de niveaux de la mine est incrémenté de 1.
+      B_construction := FALSE ;           // La construction étant terminée, le booléen devient faux.
+  end;
 
-procedure caserne (var P_point, P_niveaux, P_nivCaserne : integer ; B_construction : boolean);
-begin
-    P_point := P_point + 3 ;
-    P_niveaux := P_niveaux +1;
-    P_nivCaserne := P_nivCaserne +1;
-    B_construction := FALSE ;
-end;
+  {Cette procédure agit une fois que la caserne a fini sa construction.}
 
-procedure ferme(var P_nourritureTour, P_niveaux, P_nivFerme : integer ; B_construction : boolean);
-begin
-    P_nourritureTour := P_nourritureTour +3;
-    P_niveaux := P_niveaux +1;
-    P_nivFerme := P_nivFerme +1;
-    B_construction := FALSE ;
-end;
+  procedure caserne (var P_point, P_niveaux, P_nivCaserne : integer ; var B_construction : boolean);
+  begin
+      P_point := P_point + 3 ;         // Le joueur obtient 3 points supplémentaires pour les combats.
+      P_niveaux := P_niveaux +1;       // Le nombre de niveaux de chacun des bâtiments est incrémenté de 1.
+      P_nivCaserne := P_nivCaserne +1; // Le nombre de niveaux de la mine est incrémenté de 1.
+      B_construction := FALSE ;        // La construction étant terminée, le booléen devient faux.
+  end;
 
-procedure carriere (var P_travailTour, P_niveaux, P_nivCarriere : integer ; B_construction : boolean) ;
-begin
-    P_travailTour := P_travailTour +5;
-    P_niveaux := P_niveaux +1;
-    P_nivCarriere := P_nivCarriere +1;
-    B_construction := FALSE ;
-end;
+  {Cette procédure agit une fois que la ferme a fini sa construction.}
 
-procedure travail (var P_travailTour, P_travailAccu, P_limTravail, P_nourritureTour, P_point, P_niveaux, P_nivFerme, P_nivMine, P_nivCaserne, P_nivCarriere, P_indiceCons : integer ; B_construction : boolean);
-begin
-     if (P_indiceCons =1) then
-     begin
-          if (P_nivFerme = 0) then P_limTravail := 20;
-          if (P_nivFerme = 1) then P_limTravail := 60;
-          if (P_nivFerme = 2) then P_limTravail := 200;
-          if (P_travailAccu <= P_limTravail) then
-          begin
-                P_travailAccu := P_travailAccu + P_travailTour;
-          end
-          else
-          begin
-              ferme(P_nourritureTour, P_niveaux, P_nivFerme, B_construction);
-              P_indiceCons :=0;
-          end;
-     end;
-     if (P_indiceCons =2) then
-     begin
-          if (P_nivMine = 0) then P_limTravail := 100;
-          if (P_nivMine = 1) then P_limTravail := 300;
-          if (P_nivMine = 2) then P_limTravail := 600;
-          if (P_travailAccu <= P_limTravail) then
-          begin
-                P_travailAccu := P_travailAccu + P_travailTour;
-          end
-          else
-          begin
-              mine(P_travailTour, P_niveaux, P_nivMine, B_construction);
-              P_indiceCons :=0;
-          end;
-     end;
-          if (P_indiceCons =3) then
-     begin
-          if (P_nivCarriere = 0) then P_limTravail := 50;
-          if (P_nivCarriere = 1) then P_limTravail := 150;
-          if (P_nivCarriere = 2) then P_limTravail := 300;
-          if (P_travailAccu <= P_limTravail) then
-          begin
-                P_travailAccu := P_travailAccu + P_travailTour;
-          end
-          else
-          begin
-              carriere(P_travailTour, P_niveaux, P_nivCarriere, B_construction);
-              P_indiceCons :=0;
-          end;
-     end;
-          if (P_indiceCons =4) then
-     begin
-          if (P_nivCaserne = 0) then P_limTravail := 50;
-          if (P_nivCaserne = 1) then P_limTravail := 150;
-          if (P_nivCaserne = 2) then P_limTravail := 300;
-          if (P_travailAccu <= P_limTravail) then
-          begin
-                P_travailAccu := P_travailAccu + P_travailTour;
-          end
-          else
-          begin
-              caserne(P_point, P_niveaux, P_nivCaserne, B_construction);
-              P_indiceCons :=0;
-          end;
-     end;
-end;
+  procedure ferme(var P_nourritureTour, P_niveaux, P_nivFerme : integer ; var B_construction : boolean);
+  begin
+      P_nourritureTour := P_nourritureTour +3; // Le joueur obtient 3 unités supplémentaires en nourriture par tour.
+      P_niveaux := P_niveaux +1;               // Le nombre de niveaux de chacun des bâtiments est incrémenté de 1.
+      P_nivFerme := P_nivFerme +1;             // Le nombre de niveaux de la ferme est incrémenté de 1.
+      B_construction := FALSE ;                // La construction étant terminée, le booléen devient faux.
+  end;
 
-end.
+  {Cette procédure agit une fois que la carrière a fini sa construction.}
+
+  procedure carriere (var P_travailTour, P_niveaux, P_nivCarriere : integer ; var B_construction : boolean) ;
+  begin
+      P_travailTour := P_travailTour +5; // Le joueur obtient 5 unités supplémentaires en travail par tour.
+      P_niveaux := P_niveaux +1;         // Le nombre de niveaux de chacun des bâtiments est incrémenté de 1.
+      P_nivCarriere := P_nivCarriere +1; // Le nombre de niveaux de la carrière est incrémenté de 1.
+      B_construction := FALSE ;          // La construction étant terminée, le booléen devient faux.
+  end;
+
+  {Cette procédure sert à construire les bâtiments }
+
+  procedure travail (var P_travailTour, P_travailAccu, P_limTravail, P_nourritureTour,
+                         P_point, P_niveaux, P_nivFerme, P_nivMine, P_nivCaserne,
+                         P_nivCarriere, P_indiceCons : integer ;
+                     var B_construction : boolean);
+
+  begin
+       {Tout d'abord on regarde l'indice de construction. Selon sa valeur, on construit tel ou tel bâtiment.}
+
+       if (P_indiceCons =1) then  //L'indice de construction est égal à 1, le joueur souhaite construire ou améliorer sa ferme.
+       begin
+       {On regarde le niveau de la ferme. La limite de travail est différente selon les niveaux.}
+
+            if (P_nivFerme = 0) then P_limTravail := 20;
+            if (P_nivFerme = 1) then P_limTravail := 60;
+            if (P_nivFerme = 2) then P_limTravail := 200;
+
+            if (P_travailAccu <= P_limTravail) then //Si le travail accumulé est inférieur à la limite de travail alors la construction n'est pas finie.
+            begin
+                  P_travailAccu := P_travailAccu + P_travailTour; // Donc on ajoute au travail accumulé la même valeur + le travail par tour.
+            end
+            else //Sinon cela signifie que la construction est terminée.
+            begin
+                ferme(P_nourritureTour, P_niveaux, P_nivFerme, B_construction); //Donc on appelle la procédure ferme.
+                P_indiceCons :=0; //On réinitialise l'indice de construction pour ne pas avoir de problèmes.
+            end;
+       end;
+
+       if (P_indiceCons =2) then // L'indice de construction est égal à 2, le joueur veut construire ou améliorer sa mine.
+       begin
+            if (P_nivMine = 0) then P_limTravail := 100;
+            if (P_nivMine = 1) then P_limTravail := 300;
+            if (P_nivMine = 2) then P_limTravail := 600;
+
+            if (P_travailAccu <= P_limTravail) then
+            begin
+                  P_travailAccu := P_travailAccu + P_travailTour;
+            end
+            else
+            begin
+                mine(P_travailTour, P_niveaux, P_nivMine, B_construction); //On appelle la procédure mine une fois la construction terminée.
+                P_indiceCons :=0;
+            end;
+       end;
+
+       if (P_indiceCons =3) then // L'indice de construction est égal à 3, le joueur veut construire ou améliorer sa carrière.
+       begin
+            if (P_nivCarriere = 0) then P_limTravail := 50;
+            if (P_nivCarriere = 1) then P_limTravail := 150;
+            if (P_nivCarriere = 2) then P_limTravail := 300;
+
+            if (P_travailAccu <= P_limTravail) then
+            begin
+                  P_travailAccu := P_travailAccu + P_travailTour;
+            end
+            else
+            begin
+                carriere(P_travailTour, P_niveaux, P_nivCarriere, B_construction); //On appelle la procédure carriere une fois la construction terminée.
+                P_indiceCons :=0;
+            end;
+       end;
+
+       if (P_indiceCons =4) then // L'indice de construction est égal à 4, le joueur veut construire ou améliorer sa caserne.
+       begin
+            if (P_nivCaserne = 0) then P_limTravail := 50;
+            if (P_nivCaserne = 1) then P_limTravail := 150;
+            if (P_nivCaserne = 2) then P_limTravail := 300;
+            if (P_travailAccu <= P_limTravail) then
+            begin
+                  P_travailAccu := P_travailAccu + P_travailTour;
+            end
+            else
+            begin
+                caserne(P_point, P_niveaux, P_nivCaserne, B_construction); //On appelle la procédure caserne une fois la construction terminée.
+                P_indiceCons :=0;
+            end;
+       end;
+  end;
+
+  end.
