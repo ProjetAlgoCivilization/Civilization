@@ -14,20 +14,23 @@ implementation
 
 procedure titre();
 begin
-writeln('                  ══════════════════════════════════════════════════════════════════════════════  ');
-       writeln('                                                                                      ');
-       writeln('                                                                                       ');
-       writeln('             ██████╗██╗██╗   ██╗██╗██╗     ██╗███████╗ █████╗ ████████╗██╗ ██████╗ ███╗   ██╗     ██████╗');
-       writeln('            ██╔════╝██║██║   ██║██║██║     ██║╚══███╔╝██╔══██╗╚══██╔══╝██║██╔═══██╗████╗  ██║    ██╔═████╗');
-       writeln('            ██║     ██║██║   ██║██║██║     ██║  ███╔╝ ███████║   ██║   ██║██║   ██║██╔██╗ ██║    ██║██╔██║');
-       writeln('            ██║     ██║╚██╗ ██╔╝██║██║     ██║ ███╔╝  ██╔══██║   ██║   ██║██║   ██║██║╚██╗██║    ████╔╝██║ ');
-       writeln('            ╚██████╗██║ ╚████╔╝ ██║███████╗██║███████╗██║  ██║   ██║   ██║╚██████╔╝██║ ╚████║    ╚██████╔╝ ');
-       writeln('             ╚═════╝╚═╝  ╚═══╝  ╚═╝╚══════╝╚═╝╚══════╝╚═╝  ╚═╝   ╚═╝   ╚═╝ ╚═════╝ ╚═╝  ╚═══╝     ╚═════╝  ');
-       writeln('                                                                                      ');
-       writeln('                                                                                       ');
-       writeln('                  ══════════════════════════════════════════════════════════════════════════════');
-       writeln('                                                                                       ');
-       writeln('                                                                                       ');
+dessinerCadreXY(1,1,118,12 ,typeBordure.simple , 15, 0) ;
+deplacerCurseurXY(20,2) ;
+writeln('══════════════════════════════════════════════════════════════════════════════  ');
+deplacerCurseurXY(12,4) ;
+writeln(' ██████╗██╗██╗   ██╗██╗██╗     ██╗███████╗ █████╗ ████████╗██╗ ██████╗ ███╗   ██╗     ██████╗');
+deplacerCurseurXY(12,5) ;
+writeln('██╔════╝██║██║   ██║██║██║     ██║╚══███╔╝██╔══██╗╚══██╔══╝██║██╔═══██╗████╗  ██║    ██╔═████╗');
+deplacerCurseurXY(12,6) ;
+writeln('██║     ██║██║   ██║██║██║     ██║  ███╔╝ ███████║   ██║   ██║██║   ██║██╔██╗ ██║    ██║██╔██║');
+deplacerCurseurXY(12,7) ;
+writeln('██║     ██║╚██╗ ██╔╝██║██║     ██║ ███╔╝  ██╔══██║   ██║   ██║██║   ██║██║╚██╗██║    ████╔╝██║ ');
+deplacerCurseurXY(12,8) ;
+writeln('╚██████╗██║ ╚████╔╝ ██║███████╗██║███████╗██║  ██║   ██║   ██║╚██████╔╝██║ ╚████║    ╚██████╔╝ ');
+deplacerCurseurXY(12,9) ;
+writeln(' ╚═════╝╚═╝  ╚═══╝  ╚═╝╚══════╝╚═╝╚══════╝╚═╝  ╚═╝   ╚═╝   ╚═╝ ╚═════╝ ╚═╝  ╚═══╝     ╚═════╝  ');
+deplacerCurseurXY(20,10) ;
+writeln('══════════════════════════════════════════════════════════════════════════════  ');
 end;
 
 procedure D_militaire(var P_nourriture,P_tour,P_nourritureTour,P_population,P_travailTour,P_tourAvCroissance, P_soldat, P_canon, P_point, P_limNour : Integer ; B_construction : boolean);
@@ -124,22 +127,35 @@ end;
 procedure D_menu(var P_nourriture,P_tour,P_nourritureTour,P_population,P_travailTour,P_tourAvCroissance, P_soldat, P_canon, P_point, P_limNour:Integer ; B_construction : boolean);
 begin
 titre();
-       writeln('Bienvenue dans Civilization 0 - Call to coding ');
+dessinerCadreXY(1,14,118,20 ,typeBordure.simple , 15, 0) ;
+deplacerCurseurXY(35,14);
+writeln('Bienvenue dans Civilization 0 - Call to coding ');
+deplacerCurseurXY(2,16);
+writeln('Votre mission si vous l''acceptez est de bâtir un empire qui laissera sa marque dans l''histoire, depuis ses premiers ');
+deplacerCurseurXY(2,17);
+writeln('pas à l''époque de l''Antiquité jusqu''en l''an 3000. Lancez-vous dans une conquête au cours de laquelle chaque ');
+deplacerCurseurXY(2,18);
+writeln('stratégie que vous concevez, chaque découverte technologique que vous faites et chaque guerre que vous déclarez a ');
+deplacerCurseurXY(2,19);
+writeln('des répercussions sur l''avenir de votre empire. Répondez à l''appel du pouvoir. L''avenir est entre vos mains.');
+deplacerCurseurXY(44,21);
+writeln('Que la force soit avec vous ! ');
+deplacerCurseurXY(0,22);
+writeln('_______________________________________________________________________________________________________________________');
+
        writeln('');
-       writeln('Votre mission si vous l''acceptez est de bâtir empire qui laissera sa marque dans l''histoire, depuis ses' +
-               ' premiers pas à l''époque de l''Antiquité jusqu''en l''an 3000. Lancez-vous dans une conquête au cours de laquelle' +
-               ' chaque stratégie que vous concevez, chaque découverte technologique que vous faites et chaque guerre que vous déclarez' +
-               ' a des répercussions sur l''avenir de votre empire. Répondez à l''appel du pouvoir. L''avenir est entre vos mains.');
-       writeln('');
-       writeln('Que la force soit avec vous ! ');
-       writeln('');
-       writeln('');
+
+
+
+
        writeln('     1 - Débuter une nouvelle partie');
        writeln('');
        writeln('     2 - Quitter le jeu');
        writeln('');
        writeln('');
-       writeln('Alors ? Souhaitez vous jouez, ou préférez vous attendre ?');
+       writeln(' Alors ? Souhaitez vous jouez, ou préférez vous attendre ?');
+       dessinerCadreXY(112,28,118,30 ,typeBordure.simple , 15, 0) ;
+   deplacerCurseurXY(115,29);
 end;
 
 procedure D_combat (var P_tour : integer);
@@ -184,7 +200,7 @@ writeln('Civilisation : France');
 deplacerCurseurXY(110,2);
 writeln('Tour :' ,P_tour);
 deplacerCurseurXY(47,2);
-writeln('Dirigeant : Andrew Wilson');
+writeln('Dirigeant :');
 deplacerCurseurXY(46,6);
 writeln(' Vue détaillée de: Paris');
 deplacerCurseurXY(44,7);
@@ -223,4 +239,6 @@ dessinerCadreXY(112,27,118,29 ,typeBordure.simple , 15, 0) ;
 end;
 
 end.
+
+
 
