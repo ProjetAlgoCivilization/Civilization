@@ -1,0 +1,258 @@
+unit design2_0;
+
+interface
+  uses GestionEcran, amélioration;
+  procedure titre();
+  procedure D_militaire(var P_nourriture,P_tour,P_nourritureTour,P_population,P_travailTour,P_tourAvCroissance, P_soldat, P_canon, P_point, P_limNour : Integer ; var P_civilization, P_capitale, P_dirigeant : string );
+  procedure D_principal (var P_nourriture, P_tour, P_nourritureTour, P_population, P_travailTour, P_tourAvCroissance,
+                          P_soldat, P_canon, P_point, P_limNour :INTEGER ; P_civilization, P_capitale, P_dirigeant : string);
+  procedure D_menu(var P_nourriture,P_tour,P_nourritureTour,P_population,P_travailTour,P_tourAvCroissance, P_soldat, P_canon, P_point, P_limNour:Integer ; var P_civilization, P_capitale, P_dirigeant : string);
+  procedure D_combat(var P_tour : integer);
+  procedure D_capitale(var P_nourriture,P_tour,P_nourritureTour,P_population,P_travailTour,P_tourAvCroissance, P_soldat, P_canon, P_point, P_limNour:Integer ; var P_civilization, P_capitale, P_dirigeant : string);
+
+implementation
+
+  procedure titre();
+  begin
+  dessinerCadreXY(1,1,118,12 ,typeBordure.simple , 15, 0) ;
+  deplacerCurseurXY(20,2) ;
+  writeln('══════════════════════════════════════════════════════════════════════════════  ');
+  deplacerCurseurXY(12,4) ;
+  writeln(' ██████╗██╗██╗   ██╗██╗██╗     ██╗███████╗ █████╗ ████████╗██╗ ██████╗ ███╗   ██╗     ██████╗');
+  deplacerCurseurXY(12,5) ;
+  writeln('██╔════╝██║██║   ██║██║██║     ██║╚══███╔╝██╔══██╗╚══██╔══╝██║██╔═══██╗████╗  ██║    ██╔═████╗');
+  deplacerCurseurXY(12,6) ;
+  writeln('██║     ██║██║   ██║██║██║     ██║  ███╔╝ ███████║   ██║   ██║██║   ██║██╔██╗ ██║    ██║██╔██║');
+  deplacerCurseurXY(12,7) ;
+  writeln('██║     ██║╚██╗ ██╔╝██║██║     ██║ ███╔╝  ██╔══██║   ██║   ██║██║   ██║██║╚██╗██║    ████╔╝██║ ');
+  deplacerCurseurXY(12,8) ;
+  writeln('╚██████╗██║ ╚████╔╝ ██║███████╗██║███████╗██║  ██║   ██║   ██║╚██████╔╝██║ ╚████║    ╚██████╔╝ ');
+  deplacerCurseurXY(12,9) ;
+  writeln(' ╚═════╝╚═╝  ╚═══╝  ╚═╝╚══════╝╚═╝╚══════╝╚═╝  ╚═╝   ╚═╝   ╚═╝ ╚═════╝ ╚═╝  ╚═══╝     ╚═════╝  ');
+  deplacerCurseurXY(20,10) ;
+  writeln('══════════════════════════════════════════════════════════════════════════════  ');
+  end;
+
+  procedure D_militaire(var P_nourriture,P_tour,P_nourritureTour,P_population,P_travailTour,P_tourAvCroissance, P_soldat, P_canon, P_point, P_limNour : Integer ; var P_civilization, P_capitale, P_dirigeant : string);
+  begin
+
+  dessinerCadreXY(1,1,118,3 ,typeBordure.simple , 15, 0) ;
+  deplacerCurseurXY(2,2) ;
+  writeln('Civilisation : ', P_civilization);
+  deplacerCurseurXY(110,2);
+  writeln('Tour :' ,P_tour);
+  deplacerCurseurXY(55,2);
+  writeln('Dirigeant :', P_dirigeant);
+  dessinerCadreXY(1,11,47,17 ,typeBordure.simple , 15, 0) ;
+  deplacerCurseurXY(49,6);
+  writeln('Ecran de gestion militaire');
+  deplacerCurseurXY(47,7);
+  writeln('------------------------------');
+  deplacerCurseurXY(2,12);
+  writeln('  Listes des troupes disponibles :');
+  deplacerCurseurXY(3,13);
+  writeln('------------------------------');
+  deplacerCurseurXY(8,14);
+  writeln('- Soldats disponibles : ', P_soldat);
+  deplacerCurseurXY(8,15);
+  writeln('- Canons disponibles : ', P_canon);
+  deplacerCurseurXY(3,16);
+  writeln('Nombres de points disponibles : ', P_point);
+
+  writeln('');
+  writeln('');
+  writeln('');
+  writeln('');
+  writeln('');
+  writeln(' 1 - Recruter un soldat ');
+  writeln(' 2 - Recruter un canon ');
+  writeln('');
+  writeln(' 4 - Attaquer un petit camp barbare ');
+  writeln(' 5 - Attaquer un grand camp barbare ');
+  writeln('');
+  writeln(' 0 - Retour au menu principal ');
+  dessinerCadreXY(112,27,118,29 ,typeBordure.simple , 15, 0) ;
+  deplacerCurseurXY(115,28);
+
+  end;
+
+  procedure D_principal (var P_nourriture, P_tour, P_nourritureTour, P_population, P_travailTour, P_tourAvCroissance,
+                          P_soldat, P_canon, P_point, P_limNour :INTEGER ; P_civilization, P_capitale, P_dirigeant : string);
+  begin
+  dessinerCadreXY(1,1,118,3 ,typeBordure.simple , 15, 0) ;
+  deplacerCurseurXY(2,2) ;
+  writeln('Civilisation : ', P_civilization);
+  deplacerCurseurXY(110,2);
+  writeln('Tour :' ,P_tour);
+  deplacerCurseurXY(55,2);
+  writeln('Dirigeant :', P_dirigeant);
+  dessinerCadreXY(1,9,118,13 ,typeBordure.simple , 15, 0) ;
+  deplacerCurseurXY(46,6);
+  writeln('Ecran de gestion de la civilisation');
+  deplacerCurseurXY(45,7);
+  writeln('-------------------------------------');
+  deplacerCurseurXY(2,10);
+  writeln('Nom : ', P_capitale);
+  deplacerCurseurXY(40,10);
+  writeln('Nourriture :', P_nourriture, '/', P_limNour, '');
+  deplacerCurseurXY(80,10);
+  writeln('Travail par tour :' ,P_travailTour);
+  deplacerCurseurXY(2,11);
+  writeln('Population :',P_population,' ');
+  deplacerCurseurXY(40,11);
+  writeln('Nourriture par tour : ',P_nourritureTour ,'');
+  deplacerCurseurXY(80,11);
+  writeln('Pas de construction en cours');
+  deplacerCurseurXY(2,12);
+  writeln('Nb tours avant croissance :',P_tourAvCroissance);
+     writeln('');
+     writeln('');
+     writeln('');
+     writeln('');
+     writeln('');
+     writeln('');
+     writeln('');
+     writeln('');
+     writeln('');
+     writeln('  1 - Accéder à : ' , P_capitale);
+     writeln('  2 - Gestion millitaire et diplomatique');
+     writeln(' ');
+     writeln('  9 - Fin de tour');
+     writeln('  0 - Quitter la partie');
+
+     dessinerCadreXY(112,27,118,29 ,typeBordure.simple , 15, 0) ;
+     deplacerCurseurXY(115,28);
+  end;
+
+  procedure D_menu(var P_nourriture,P_tour,P_nourritureTour,P_population,P_travailTour,P_tourAvCroissance, P_soldat, P_canon, P_point, P_limNour:Integer ; var P_civilization, P_capitale, P_dirigeant : string);
+  begin
+  titre();
+  dessinerCadreXY(1,14,118,20 ,typeBordure.simple , 15, 0) ;
+  deplacerCurseurXY(35,14);
+  writeln('Bienvenue dans Civilization 0 - Call to coding ');
+  deplacerCurseurXY(2,16);
+  writeln('Votre mission si vous l''acceptez est de bâtir un empire qui laissera sa marque dans l''histoire, depuis ses premiers ');
+  deplacerCurseurXY(2,17);
+  writeln('pas à l''époque de l''Antiquité jusqu''en l''an 3000. Lancez-vous dans une conquête au cours de laquelle chaque ');
+  deplacerCurseurXY(2,18);
+  writeln('stratégie que vous concevez, chaque découverte technologique que vous faites et chaque guerre que vous déclarez a ');
+  deplacerCurseurXY(2,19);
+  writeln('des répercussions sur l''avenir de votre empire. Répondez à l''appel du pouvoir. L''avenir est entre vos mains.');
+  deplacerCurseurXY(44,21);
+  writeln('Que la force soit avec vous ! ');
+  deplacerCurseurXY(0,22);
+  writeln('_______________________________________________________________________________________________________________________');
+
+         writeln('');
+
+
+
+
+         writeln('     1 - Débuter une nouvelle partie');
+         writeln('');
+         writeln('     2 - Quitter le jeu');
+         writeln('');
+         writeln('');
+         writeln(' Alors ? Souhaitez vous jouez, ou préférez vous attendre ?');
+         dessinerCadreXY(112,28,118,30 ,typeBordure.simple , 15, 0) ;
+     deplacerCurseurXY(115,29);
+  end;
+
+  procedure D_combat (var P_tour : integer);
+  begin
+      writeln('                                               Combat contre : ');
+      writeln('                                           ------------------------------------------');
+      writeln('                           ');
+      writeln('                           ');
+      writeln('  Description de vos forces : ');
+      writeln('  ---------------------------');
+      writeln('     - Soldats disponibles : ');
+      writeln('     - Canons disponibles  : ');
+      writeln('                           ');
+      writeln('  Descriptif des forces ennemies : ');
+      writeln('  --------------------------------');
+      writeln('     - Soldats disponibles : ');
+      writeln('     - Canons disponibles  : ');
+      writeln('                           ');
+      writeln('                           ');
+      writeln('                           ');
+      writeln('                           ');
+      writeln('                           ');
+      writeln('                           ');
+      writeln('                           ');
+      writeln('                           ');
+      writeln('                           ');
+      writeln('  1 - Attaquer les soldats ennemis');
+      writeln('  2 - Attaquer les canons ennemis');
+  end;
+
+  procedure D_capitale(var P_nourriture,P_tour,P_nourritureTour,P_population,P_travailTour,P_tourAvCroissance, P_soldat, P_canon, P_point, P_limNour:Integer ; var P_civilization, P_capitale, P_dirigeant : string);
+  begin
+
+  dessinerCadreXY(1,1,118,3 ,typeBordure.simple , 15, 0) ;
+  deplacerCurseurXY(2,2) ;
+  writeln('Civilisation : ', P_civilization);
+  deplacerCurseurXY(110,2);
+  writeln('Tour :' ,P_tour);
+  deplacerCurseurXY(47,2);
+  writeln('Dirigeant :', P_dirigeant);
+  deplacerCurseurXY(46,6);
+  writeln(' Vue détaillée de: ', P_capitale);
+  deplacerCurseurXY(44,7);
+  writeln('-----------------------------');
+  dessinerCadreXY(1,9,118,13 ,typeBordure.simple , 15, 0);
+  deplacerCurseurXY(2,10);
+  writeln('Nom : ', P_capitale);
+  deplacerCurseurXY(40,10);
+  writeln('Nourriture :', P_nourriture, '/', P_limNour, '');
+  deplacerCurseurXY(80,10);
+  writeln('Travail par tour :' ,P_travailTour);
+  deplacerCurseurXY(2,11);
+  writeln('Population :',P_population,' ');
+  deplacerCurseurXY(40,11);
+  writeln('Nourriture par tour : ',P_nourritureTour ,'');
+  deplacerCurseurXY(80,11);
+  writeln('Pas de construction en cours');
+  deplacerCurseurXY(2,12);
+  writeln('Nb tours avant croissance :',P_tourAvCroissance);
+  deplacerCurseurXY(2,15);
+  writeln('  Bâtiments construits : ');
+  (P_nivFerme >=1) then
+  deplacerCurseurXY(50,15);
+  writeln('Ferme : niveau ',P_nivFerme);
+  (P_nivMine >=1) then
+  deplacerCurseurXY(50,16);
+  writeln('Mine : niveau ',P_nivMine);
+  (P_nivCarriere >=1) then
+  deplacerCurseurXY(50,17);
+  writeln('Carriere : niveau ',P_nivCarriere);
+  (P_nivCaserne >=1) then
+  deplacerCurseurXY(50,18);
+  writeln('Caserne : niveau ',P_nivCaserne);
+  (P_nivEtable >=1) then
+  deplacerCurseurXY(50,19);
+  writeln('Etable : niveau ',P_Etable);
+
+  writeln('                           ');
+  writeln('                           ');
+  writeln('                           ');
+  writeln('                           ');
+  writeln('                           ');
+  writeln('  1 - Construire la ferme');
+  writeln('  2 - Construire la mine');
+  writeln('  3 - Construire la carrière');
+  writeln('  4 - Construire la caserne');
+  writeln('  5 - Construire l''étable');
+  writeln('                           ');
+  writeln('  0 - Retour au menu');
+  dessinerCadreXY(112,27,118,29 ,typeBordure.simple , 15, 0) ;
+     deplacerCurseurXY(115,28);
+
+
+  end;
+
+  end.
+
+
+
+
